@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service: 1
+  name: MyString
+  description: MyText
+  website: MyString
+  instagram: MyString
+  tiktok: MyString
+  user: MyString
+  location: MyString
+
+two:
+  service: 1
+  name: MyString
+  description: MyText
+  website: MyString
+  instagram: MyString
+  tiktok: MyString
+  user: MyString
+  location: MyString
