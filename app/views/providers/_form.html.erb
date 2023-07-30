@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+ <div>
+    <%= form.label :images, style: "display: block" %>
+    <%= form.file_field :images, multiple: :true%>
+  </div>
   <div>
     <%= form.label :service, style: "display: block" %>
     <%= form.select :service, Provider.services.keys %>

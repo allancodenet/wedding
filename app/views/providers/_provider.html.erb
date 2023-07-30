@@ -5,6 +5,13 @@
   </p>
 
   <p>
+    <strong>images:</strong>
+    <% provider.resized_images.each do |image| %>
+    <%=image_tag image %>
+    <% end %>
+  </p>
+
+  <p>
     <strong>Name:</strong>
     <%= provider.name %>
   </p>

@@ -21,7 +21,7 @@ class ProvidersController < ApplicationController
 
   # POST /providers or /providers.json
   def create
-    @provider = Provider.new(provider_params)
+    @provider = current_user.providers.new(provider_params)
 
     respond_to do |format|
       if @provider.save
@@ -65,6 +65,6 @@ class ProvidersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def provider_params
-      params.require(:provider).permit(:service, :name, :description, :website, :instagram, :tiktok, :user, :location)
+      params.require(:provider).permit(:service, :name, :description, :website, :instagram, :tiktok, :location, images:[])
     end
 end
