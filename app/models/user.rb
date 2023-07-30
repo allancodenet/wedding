@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :providers
+  has_one :client
   enum role: {
     client: 0,
     provider: 1

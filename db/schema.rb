@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_29_124003) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_094819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_124003) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.date "wedding_date"
+    t.string "location"
+    t.integer "guest_no"
+    t.integer "budget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
   create_table "providers", force: :cascade do |t|
     t.integer "service"
     t.string "name"
@@ -71,5 +83,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_124003) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "clients", "users"
   add_foreign_key "providers", "users"
 end
