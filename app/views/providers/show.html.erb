@@ -3,8 +3,13 @@
 <%= render @provider %>
 
 <div>
-  <%= link_to "Edit this provider", edit_provider_path(@provider) %> |
-  <%= link_to "Back to providers", providers_path %>
-
-  <%= button_to "Destroy this provider", @provider, method: :delete %>
+ <%= link_to "Back to providers", providers_path %>
+<% if policy(@provider).edit? %>
+  <%= link_to "Edit this provider", edit_provider_path(@provider) %>
+<% end %>
+ 
+<% if policy(@provider).destroy? %>
+ <%= button_to "Destroy this provider", @provider, method: :delete %>
+<% end %>
+  
 </div>
