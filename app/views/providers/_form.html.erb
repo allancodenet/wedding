@@ -1,4 +1,5 @@
-<%= form_with(model: provider) do |form| %>
+<div class =" container">
+<%= bootstrap_form_with(model: provider) do |form| %>
   <% if provider.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
@@ -11,42 +12,34 @@
     </div>
   <% end %>
  <div>
-    <%= form.label :images, style: "display: block" %>
     <%= form.file_field :images, multiple: :true%>
   </div>
   <div>
-    <%= form.label :service, style: "display: block" %>
     <%= form.select :service, Provider.services.keys %>
   </div>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
 
   <div>
-    <%= form.label :website, style: "display: block" %>
     <%= form.text_field :website %>
   </div>
 
   <div>
-    <%= form.label :instagram, style: "display: block" %>
     <%= form.text_field :instagram %>
   </div>
 
   <div>
-    <%= form.label :tiktok, style: "display: block" %>
     <%= form.text_field :tiktok %>
   </div>
 
 
   <div>
-    <%= form.label :location, style: "display: block" %>
     <%= form.text_field :location %>
   </div>
 
@@ -54,3 +47,9 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+
+
+
+
+</div>

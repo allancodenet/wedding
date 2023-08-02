@@ -9,8 +9,7 @@
       <!-- sidebar -->
      <%# <%= render "filter" %> 
      
-<h1>Providers</h1>
-<%= link_to "Create your service", new_provider_path %>
+
      <%= render "sort" %>
       <!-- sidebar -->
       <!-- content -->
@@ -45,7 +44,7 @@
                 <h4 class="card-title"><%= provider.name %></h4>
                 <p class="card-text"><%= provider.description %></p>
                  <p>
-                  <%= link_to "Show this provider", provider %>
+                  <%= link_to "view this provider", provider, class: "btn btn-outline-primary" %>
                 </p>
             </div>
         </div>

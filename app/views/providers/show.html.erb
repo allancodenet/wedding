@@ -1,5 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
+<div class ="container">
+ <%= link_to "Back to providers", providers_path, class: "  fa fa-arrow-circle-left" %>
+<% if policy(@provider).edit? %>
+  <%= link_to "Edit this provider", edit_provider_path(@provider), class: "fa fa-pencil" %>
+<% end %>
+ 
+<% if policy(@provider).destroy? %>
+ <%= button_to "Destroy this provider", @provider, method: :delete, class: "btn btn-danger" %>
+<% end %>
+  
+</div>
 
 
 <!-- content -->
@@ -109,20 +120,17 @@
       <div class="col-lg-8 mb-4">
         <div class="border rounded-2 px-3 py-2 bg-white">
           <!-- Pills navs -->
-          <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-            <li class="nav-item d-flex" role="presentation">
-              <a class="nav-link d-flex align-items-center justify-content-center w-100 active" id="ex1-tab-1" data-mdb-toggle="pill" href="#ex1-pills-1" role="tab" aria-controls="ex1-pills-1" aria-selected="true">Specification</a>
-            </li>
-            <li class="nav-item d-flex" role="presentation">
-              <a class="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-2" data-mdb-toggle="pill" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false">Warranty info</a>
-            </li>
-            <li class="nav-item d-flex" role="presentation">
-              <a class="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-3" data-mdb-toggle="pill" href="#ex1-pills-3" role="tab" aria-controls="ex1-pills-3" aria-selected="false">Shipping info</a>
-            </li>
-            <li class="nav-item d-flex" role="presentation">
-              <a class="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-4" data-mdb-toggle="pill" href="#ex1-pills-4" role="tab" aria-controls="ex1-pills-4" aria-selected="false">Seller profile</a>
-            </li>
-          </ul>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+  </li>
+</ul>
           <!-- Pills navs -->
 
           <!-- Pills content -->
@@ -196,6 +204,8 @@
           <!-- Pills content -->
         </div>
       </div>
+
+      
       <div class="col-lg-4">
         <div class="px-0 border rounded-2 shadow-0">
           <div class="card">
@@ -259,14 +269,3 @@
 
 
 
-<div>
- <%= link_to "Back to providers", providers_path %>
-<% if policy(@provider).edit? %>
-  <%= link_to "Edit this provider", edit_provider_path(@provider) %>
-<% end %>
- 
-<% if policy(@provider).destroy? %>
- <%= button_to "Destroy this provider", @provider, method: :delete %>
-<% end %>
-  
-</div>
