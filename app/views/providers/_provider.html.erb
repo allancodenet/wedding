@@ -1,46 +1,66 @@
 
-<div id="<%= dom_id provider %>">
-  <p>
-    <strong>Service:</strong>
-    <%= provider.service %>
-  </p>
-
-  <p>
-    <strong>images:</strong>
-    <% provider.resized_images.each do |image| %>
-    <%=image_tag image %>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= provider.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= provider.description %>
-  </p>
-
-  <p>
-    <strong>Website:</strong>
-    <%= provider.website %>
-  </p>
-
-  <p>
-    <strong>Instagram:</strong>
-    <%= provider.instagram %>
-  </p>
-
-  <p>
-    <strong>Tiktok:</strong>
-    <%= provider.tiktok %>
-  </p>
 
 
-  <p>
-    <strong>Location:</strong>
-    <%= provider.location %>
-  </p>
+
+
+<section class="">
+  <div class="container">
+    <div class="row">
+      <!-- sidebar -->
+     <%# <%= render "filter" %> 
+     
+<h1>Providers</h1>
+<%= link_to "Create your service", new_provider_path %>
+     <%= render "sort" %>
+      <!-- sidebar -->
+      <!-- content -->
+      <div class="col">
+       
+
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+<div id="<%= dom_id provider %>">  
+ <div class="col">
+        <div class="card">
+            <div id="carousel-1" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                     <%=image_tag provider.resized_images.first, class: "w-100 d-block" %>
+                    </div>
+                    <div class="carousel-item">
+                     <%=image_tag provider.resized_images.second, class: "w-100 d-block" %>
+                    </div>
+                    <div class="carousel-item">
+                    <%=image_tag provider.resized_images.last, class: "w-100 d-block" %>
+                    </div>
+                </div>
+                <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></a></div>
+                <ol class="carousel-indicators">
+                    <li class="active" data-bs-target="#carousel-1" data-bs-slide-to="0"></li>
+                    <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+                </ol>
+            </div>
+            <div class="card-body p-4">
+                <p class="text-secondary card-text mb-0"><%= provider.location %></p>
+                <h4 class="card-title"><%= provider.name %></h4>
+                <p class="card-text"><%= provider.description %></p>
+                 <p>
+                  <%= link_to "Show this provider", provider %>
+                </p>
+            </div>
+        </div>
+    </div>
 
 </div>
+   
+</div>
+
+        <hr />
+
+        <!-- Pagination -->
+
+        <!-- Pagination -->
+      </div>
+    </div>
+  </div>            
+</section>

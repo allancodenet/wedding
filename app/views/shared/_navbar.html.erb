@@ -1,21 +1,23 @@
- <nav class="navbar navbar-light navbar-expand-md py-3" style="background: rgba(251,187,3,0.68);">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span style="font-style: italic;text-decoration: underline;font-weight: bold;transform: rotate(-9deg);">Ndoa</span></a><button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-4"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div id="navcol-4" class="collapse navbar-collapse flex-grow-0 order-md-first">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link fw-bolder" href="#">Service Providers</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="#">Outfit Providers</a></li>
-                </ul>
-                <div class="d-md-none my-2"><button class="btn btn-light me-2" type="button">Button</button><button class="btn btn-primary" type="button">Button</button></div>
-            </div>
-            <div class="d-none d-md-block">
+<nav class="navbar navbar-light navbar-expand-md py-3"  style="background: rgba(251,187,3,0.68);" >
+    <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="/">
+    <%# <img class="pe-2 pt-0" src="quad logo.png" width="66" height="40" style="margin-right: 5px;" /> %>
+    <span class="fw-bold text-start mt-0 pb-0 mb-1 pe-0 pt-0"  style="font-style: italic;text-decoration: underline;font-weight: bold;transform: rotate(-9deg);">Ndoa <br /></span>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-3"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div id="navcol-3" class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link fw-bold" href="/providers">Providers</a></li>
+               
+            </ul>
             <% if user_signed_in? %>
-            <%= button_to "Logout", destroy_user_session_path, method: :delete,  class: "btn btn-light me-2" %>
-            <% else %>
-               <a class="btn btn-light me-2" role="button" href="users/sign_in">Log In</a>
-            <a class="btn btn-secondary" role="button" href="users/sign_up">Register</a>
+            <%= button_to "Log Out", destroy_user_session_path, method: :delete, class:"btn btn-outline-secondary " %>
+           <% else %>
+            <%= link_to "Log In", new_user_session_path, class:"btn btn-secondary me-2 " %>
+            <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-outline-secondary" %>
             <% end %>
-           
-            
-            </div>
         </div>
-    </nav>
+    </div>
+</nav>
+
+

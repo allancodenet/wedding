@@ -13,4 +13,9 @@ class Provider < ApplicationRecord
     def resized_images
         images.map { |image| image.variant(resize_to_limit: [300, 300]).processed }
     end
+    def show_images
+        images.map { |image| image.variant(resize_to_limit: [1400, 800]).processed }
+    end
+
+
 end
