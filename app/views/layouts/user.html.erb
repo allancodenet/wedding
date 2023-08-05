@@ -14,12 +14,13 @@
 
   <body >
   <%= render "shared/navbar" %>
-  <%# <%= render "shared/notice" %> 
+ 
   <section class="position-relative py-4 py-xl-5">
     <div class="container">
         <div class="row ">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
                 <h2><%= yield :title %></h2>
+                     <%= render "shared/notice" %>
                 <p class="w-lg-50"></p>
             </div>
         </div>
