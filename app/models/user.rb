@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :providers
   has_one :client
+  validates :role, presence: true
+
+
   enum role: {
     client: 0,
     provider: 1

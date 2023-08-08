@@ -41,6 +41,7 @@ class ProvidersController < ApplicationController
   def update
     @provider = Provider.find params[:id]
     authorize @provider
+
     respond_to do |format|
       if @provider.update(provider_params)
         format.html { redirect_to provider_url(@provider), notice: "Provider was successfully updated." }
@@ -63,6 +64,7 @@ class ProvidersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

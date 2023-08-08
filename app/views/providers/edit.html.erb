@@ -1,10 +1,24 @@
-<h1>Editing provider</h1>
-
-<%= render "form", provider: @provider %>
-
-<br>
 
 <div>
   <%= link_to "Show this provider", @provider %> |
   <%= link_to "Back to providers", providers_path %>
 </div>
+
+<section class="position-relative py-4 py-xl-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2>Edit Provider</h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 col-xl-6">
+                <div class="card mb-5">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <%= render "form", provider: @provider %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
