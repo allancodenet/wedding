@@ -1,5 +1,4 @@
 class ProviderPolicy < ApplicationPolicy
- 
   def edit?
     user_is_owner?
   end
@@ -11,6 +10,7 @@ class ProviderPolicy < ApplicationPolicy
   def destroy?
     user_is_owner?
   end
+
   def create?
     user_is_owner?
   end
@@ -20,5 +20,4 @@ class ProviderPolicy < ApplicationPolicy
   def user_is_owner?
     record.user == user
   end
-
 end

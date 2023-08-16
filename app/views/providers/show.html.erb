@@ -34,31 +34,26 @@
                 4.5
               </span>
             </div>
-            <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
-            <span class="text-success ms-2">In stock</span>
+            <span class="text-muted"><i class="fas fa-heart text-danger fa-sm mx-1"></i>154 Likes</span>
           </div>
 
-          <div class="mb-3">
-            <span class="h5">$75.00</span>
-            <span class="text-muted">/per box</span>
-          </div>
 
           <p>
            <%= @provider.description %>
           </p>
 
           <div class="row">
-            <dt class="col-3">Type:</dt>
-            <dd class="col-9">Regular</dd>
+            <dt class="col-3">Service:</dt>
+            <dd class="col-9"> <%= @provider.service.capitalize %></dd>
 
-            <dt class="col-3">Color</dt>
-            <dd class="col-9">Brown</dd>
+            <dt class="col-3">Location:</dt>
+            <dd class="col-9"><%= @provider.location.capitalize %></dd>
 
-            <dt class="col-3">Material</dt>
-            <dd class="col-9">Cotton, Jeans</dd>
+            <dt class="col-3">Negotiable?</dt>
+            <dd class="col-9">Yes</dd>
 
-            <dt class="col-3">Brand</dt>
-            <dd class="col-9">Reebook</dd>
+            <dt class="col-3">Consultation:</dt>
+            <dd class="col-9">Free</dd>
           </div>
 
           <hr />
@@ -68,7 +63,7 @@
           </div>
           <a href="#" class="btn btn-warning shadow-0"> Message </a>
           <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Book </a>
-          <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart fa-lg"></i> Like</a>
+          <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart text-danger fa-lg"></i> Like</a>
         </div>
       </main>
     </div>

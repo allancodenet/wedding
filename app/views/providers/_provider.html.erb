@@ -1,42 +1,20 @@
+<div class= " col-lg-4 col-md-6 col-sm-6 d-flex">
+  <div id="<%= dom_id provider %>">  
 
-
-
-
-
-<section class="">
-  <div class="container">
-    <div class="row">
-      <!-- sidebar -->
-     <%# <%= render "filter" %> 
-     
-     <%= render "sort" %>
-      <!-- sidebar -->
-      <!-- content -->
-      <div class="col">
-       
-
-        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-<div id="<%= dom_id provider %>">  
- <div class="col">
-        <div class="card">
+        <div class="card  w-100 my-2 shadow-2-strong">
             <div id="carousel-1" class="carousel slide" data-bs-ride="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                     <%=image_tag provider.resized_images.first, class: "w-100 d-block" %>
+                     <%=image_tag provider.resized_images.first, class: "card-img-top" %>
                     </div>
                     <div class="carousel-item">
-                     <%=image_tag provider.resized_images.second, class: "w-100 d-block" %>
+                     <%=image_tag provider.resized_images.second,  class: "card-img-top" %>
                     </div>
                     <div class="carousel-item">
-                    <%=image_tag provider.resized_images.last, class: "w-100 d-block" %>
+                    <%=image_tag provider.resized_images.last,  class: "card-img-top" %>
                     </div>
                 </div>
                 <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></a></div>
-                <ol class="carousel-indicators">
-                    <li class="active" data-bs-target="#carousel-1" data-bs-slide-to="0"></li>
-                    <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
-                    <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
-                </ol>
             </div>
             <div class="card-body p-4">
               <h4 class="card-title"><%= provider.name.capitalize %></h4>
@@ -50,15 +28,7 @@
     </div>
 
 </div>
-   
-</div>
 
-        <hr />
 
-        <!-- Pagination -->
 
-        <!-- Pagination -->
-      </div>
-    </div>
-  </div>            
-</section>
+

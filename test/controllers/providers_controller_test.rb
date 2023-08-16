@@ -17,7 +17,7 @@ class ProvidersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create provider" do
     assert_difference("Provider.count") do
-      post providers_url, params: { provider: { description: @provider.description, instagram: @provider.instagram, location: @provider.location, name: @provider.name, service: @provider.service, tiktok: @provider.tiktok, user: @provider.user, website: @provider.website } }
+      post providers_url, params: {provider: {description: @provider.description, instagram: @provider.instagram, location: @provider.location, name: @provider.name, service: @provider.service, tiktok: @provider.tiktok, user: @provider.user, website: @provider.website}}
     end
 
     assert_redirected_to provider_url(Provider.last)
@@ -34,7 +34,7 @@ class ProvidersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update provider" do
-    patch provider_url(@provider), params: { provider: { description: @provider.description, instagram: @provider.instagram, location: @provider.location, name: @provider.name, service: @provider.service, tiktok: @provider.tiktok, user: @provider.user, website: @provider.website } }
+    patch provider_url(@provider), params: {provider: {description: @provider.description, instagram: @provider.instagram, location: @provider.location, name: @provider.name, service: @provider.service, tiktok: @provider.tiktok, user: @provider.user, website: @provider.website}}
     assert_redirected_to provider_url(@provider)
   end
 

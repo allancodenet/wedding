@@ -1,5 +1,5 @@
 class ProvidersController < ApplicationController
-  before_action :set_provider, only: %i[ show edit update destroy ]
+  before_action :set_provider, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   # GET /providers or /providers.json
@@ -65,20 +65,21 @@ class ProvidersController < ApplicationController
     end
   end
 
- 
-      def delete_image_attachment
-            @image = ActiveStorage::Attachment.find(params[:id])
-          @image.purge
-          redirect_back(fallback_location: request.referer, notice: "Image deleted")
-      end
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_provider
-      @provider = Provider.find(params[:id])
-    end
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    redirect_back(fallback_location: request.referer, notice: "Image deleted")
+  end
 
-    # Only allow a list of trusted parameters through.
-    def provider_params
-      params.require(:provider).permit(:service, :name, :description, :website, :instagram, :tiktok, :location, images:[])
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_provider
+    @provider = Provider.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def provider_params
+    params.require(:provider).permit(:service, :name, :motto, :capacity, :description, :website, :instagram, :tiktok, :location, images: [])
+  end
 end

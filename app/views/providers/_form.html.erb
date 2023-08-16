@@ -38,23 +38,30 @@
   </div>
 
   <div>
-    <%= form.text_field :name, required: true %>
+    <%= form.text_field :name, required: true, placeholder: "Write your Business Name here" %>
   </div>
 
   <div>
-    <%= form.text_area :description , required: true %>
+    <%= form.text_area :motto , required: true, placeholder: "Write your Business Motto here" %>
+  </div>
+  <div>
+    <%= form.text_area :description , required: true, placeholder: "Describe your business here" %>
+  </div>
+
+   <div >
+    <%= form.label :capacity, "How Many Guests can you handle?", class: "fw-bold" %>
+    <%= form.number_field :capacity,  placeholder: "300" %>
+   </div>
+  <div>
+    <%= form.text_field :website, placeholder: "Link to your website if any" %>
   </div>
 
   <div>
-    <%= form.text_field :website %>
+    <%= form.text_field :instagram, placeholder: "Link to your Instagram if any" %>
   </div>
 
   <div>
-    <%= form.text_field :instagram %>
-  </div>
-
-  <div>
-    <%= form.text_field :tiktok %>
+    <%= form.text_field :tiktok, placeholder: "Link to your tiktok if any" %>
   </div>
 
 
