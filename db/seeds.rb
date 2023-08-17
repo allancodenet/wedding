@@ -23,7 +23,7 @@ user = User.create!(
     description: Faker::Lorem.paragraphs(number: 5).join("\n\n"),
     motto: Faker::Lorem.sentence,
     location: Faker::Address.city,
-    service: :venue
+    service: Provider.services.keys.sample
   )
 
   # Attach images to the provider
