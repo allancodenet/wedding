@@ -1,0 +1,37 @@
+<div>
+  <%= link_to "Back to providers", providers_path %>
+</div>
+<section class="position-relative py-4 py-xl-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2>New Provider</h2>
+                <p class="w-lg-50">
+                Fill your details below, remember to choose the service you wish to offer.
+                </p>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 col-xl-6">
+                <div class="card mb-5">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <%= render "form", provider: @provider %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+

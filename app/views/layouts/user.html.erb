@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wedding</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha512-c93ifPoTvMdEJH/rKIcBx//AL1znq9+4/RmMGafI/vnTFe/dKwnn1uoeszE2zJBQTS1Ck5CqSBE+34ng2PthJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+  </head>
+
+  <body  class = "">
+  <%= render "shared/navbar" %>
+    <div class ="d-flex align-items-center justify-content-center">
+    <%= render "shared/notice" %>
+    </div>
+  <section class="position-relative py-4 py-xl-5 bg-good bg-light-radial">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2><%= yield :title %></h2>
+                    
+                <p class="w-lg-50"></p>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 col-xl-4">
+                <div class="card mb-5">
+                    <div class="card-body">
+                       
+                        <%= yield %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  
+  </body>
+</html>
