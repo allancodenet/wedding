@@ -14,6 +14,7 @@ class ProvidersController < ApplicationController
   # GET /providers/new
   def new
     @provider = Provider.new
+    authorize @provider
   end
 
   # GET /providers/1/edit
@@ -72,6 +73,10 @@ class ProvidersController < ApplicationController
   end
 
   private
+
+  def verify_role
+    current_user.role == provider
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_provider

@@ -1,4 +1,4 @@
-class ProviderPolicy < ApplicationPolicy
+class ClientPolicy < ApplicationPolicy
   def edit?
     user_is_owner?
   end
@@ -12,16 +12,12 @@ class ProviderPolicy < ApplicationPolicy
   end
 
   def create?
-    user_is_provider?
+    user.client?
   end
 
   private
 
   def user_is_owner?
     record.user == user
-  end
-
-  def user_is_provider?
-    user.role == "provider"
   end
 end
