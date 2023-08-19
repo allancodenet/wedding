@@ -2,19 +2,24 @@
   <div id="<%= dom_id provider %>">  
 
         <div class="card  w-100 my-2 shadow-2-strong">
-            <div id="carousel-1" class="carousel slide" data-bs-ride="false">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                     <%=image_tag provider.resized_images.first, class: "card-img-top" %>
+            <div id="carousel-<%= provider.id %>" class="carousel slide" data-bs-ride="false">
+                    <div class="carousel-inner">
+                        <% provider.resized_images.each_with_index do |image, index| %>
+                        <div class="carousel-item <%= 'active' if index == 0 %>">
+                            <%= image_tag image, class: "card-img-top" %>
+                        </div>
+                        <% end %>
                     </div>
-                    <div class="carousel-item">
-                     <%=image_tag provider.resized_images.second,  class: "card-img-top" %>
+                    <div>
+                        <a class="carousel-control-prev" href="#carousel-<%= provider.id %>" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-<%= provider.id %>" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                        </a>
                     </div>
-                    <div class="carousel-item">
-                    <%=image_tag provider.resized_images.last,  class: "card-img-top" %>
-                    </div>
-                </div>
-                <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></a></div>
             </div>
             <div class="card-body p-4">
               <h4 class="card-title"><%= provider.name.capitalize %></h4>
