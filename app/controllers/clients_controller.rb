@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   # GET /clients or /clients.json
   def index
@@ -13,16 +14,19 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
+    authorize @client
   end
 
   # GET /clients/1/edit
   def edit
+    @client = Client.find params[:id]
+    authorize @client
   end
 
   # POST /clients or /clients.json
   def create
     @client = current_user.build_client(client_params)
-
+    authorize @client
     respond_to do |format|
       if @client.save
         format.html { redirect_to client_url(@client), notice: "Client was successfully created." }
@@ -36,6 +40,7 @@ class ClientsController < ApplicationController
 
   # PATCH/PUT /clients/1 or /clients/1.json
   def update
+    authorize @client
     respond_to do |format|
       if @client.update(client_params)
         format.html { redirect_to client_url(@client), notice: "Client was successfully updated." }
@@ -49,6 +54,8 @@ class ClientsController < ApplicationController
 
   # DELETE /clients/1 or /clients/1.json
   def destroy
+    @client = Client.find params[:id]
+    authorize @client
     @client.destroy
 
     respond_to do |format|

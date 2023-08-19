@@ -14,6 +14,7 @@ class ProvidersController < ApplicationController
   # GET /providers/new
   def new
     @provider = Provider.new
+    authorize @provider
   end
 
   # GET /providers/1/edit
@@ -28,7 +29,7 @@ class ProvidersController < ApplicationController
     authorize @provider
     respond_to do |format|
       if @provider.save
-        format.html { redirect_to provider_url(@provider), notice: "Provider was successfully created." }
+        format.html { redirect_to provider_url(@provider), success: "Provider was successfully created." }
         format.json { render :show, status: :created, location: @provider }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +45,7 @@ class ProvidersController < ApplicationController
 
     respond_to do |format|
       if @provider.update(provider_params)
-        format.html { redirect_to provider_url(@provider), notice: "Provider was successfully updated." }
+        format.html { redirect_to provider_url(@provider), success: "Provider was successfully updated." }
         format.json { render :show, status: :ok, location: @provider }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,7 +61,7 @@ class ProvidersController < ApplicationController
     @provider.destroy
 
     respond_to do |format|
-      format.html { redirect_to providers_url, notice: "Provider was successfully destroyed." }
+      format.html { redirect_to providers_url, danger: "Provider was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -72,6 +73,10 @@ class ProvidersController < ApplicationController
   end
 
   private
+
+  def verify_role
+    current_user.role == provider
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
