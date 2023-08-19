@@ -1,7 +1,13 @@
  <div class ="container">
-   <% flash.each do |type, message| %>
-      <div class="alert alert-<%= type%>">
-      <%= message %>
-      </div>
+  <% if flash[:notice].present? %>
+    <div class=" mt-2 alert alert-success">
+      <%= flash[:notice] %>
+   </div>
+   <% else %>
+      <% flash.each do |type, message| %>
+         <div class="alert alert-<%= type%>">
+         <%= message %>
+         </div>
+      <% end %>
    <% end %>
 </div>

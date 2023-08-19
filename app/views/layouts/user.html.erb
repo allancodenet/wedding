@@ -14,11 +14,22 @@
 
   <body  class = "">
   <%= render "shared/navbar" %>
-  <%= render "shared/flash" %>
-  <section class="position-relative py-4 py-xl-5 bg-good bg-light-radial">
+  <section class="position-relative">
     <div class="container">
+      
         <div class="row ">
+      
             <div class="col-md-8 col-xl-6 text-center mx-auto">
+               <% if flash[:notice].present? %>
+                    <div class=" mt-2 alert alert-success">
+                        <%= flash[:notice] %>
+                    </div>
+                    <% elsif flash[:alert].present? %>
+                    <div class=" mt-2 alert alert-danger">
+                        <%= flash[:alert] %>
+                    </div>
+                <% end %>
+
                 <h2><%= yield :title %></h2>
                     
                 <p class="w-lg-50"></p>
