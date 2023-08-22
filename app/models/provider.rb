@@ -14,6 +14,11 @@ class Provider < ApplicationRecord
     MC: 5,
     sound: 6
   }
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[service]
+  end
+
   def validate_attachments_limit
     if images.length > 5
       errors.add(:images, "can't exceed 5 files")
