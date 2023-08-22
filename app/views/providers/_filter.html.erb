@@ -13,80 +13,38 @@
         </button>
         <!-- Collapsible wrapper -->
         <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
-          <div class="accordion" id="accordionPanelsStayOpenExample">
-               <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingServices">
-                        <button class="accordion-button text-dark bg-light" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseServices" aria-expanded="true" aria-controls="collapseServices">
-                          Services
-                        </button>
-                      </h2>
-                      <div id="collapseServices" class="accordion-collapse collapse show" aria-labelledby="headingServices">
-                        <div class="accordion-body">
-                          <div>
-                            <% Provider.services.keys.each do |service_name| %>
-                              <div class="form-check">
-                                <input class="form-check-input service-checkbox" type="checkbox" value="<%= service_name %>"
-                                      id="serviceCheckbox<%= service_name %>" checked>
-                                <label class="form-check-label" for="serviceCheckbox<%= service_name %>"><%= service_name %></label>
-                                <span class=" badge rounded-pill bg-secondary" ><%= Provider.where(service: service_name).count %></span>
-                              </div>
-                            <% end %>
-                          </div>
+           <%= search_form_for @q, url: providers_path do |f| %>
+            <div class="accordion" id="accordionPanelsStayOpenExample" data-controller="provider-filter">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingServices">
+                  <button class="accordion-button text-dark bg-light" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseServices" aria-expanded="true" aria-controls="collapseServices">
+                    Services
+                  </button>
+                </h2>
+                <div id="collapseServices" class="accordion-collapse collapse show" aria-labelledby="headingServices">
+                  <div class="accordion-body">
+                    <div>
+                      <% Provider.services.keys.each do |service_key| %>
+                        <% service_name = Provider.services[service_key] %>
+                        <div class="form-check">
+                          <%= f.check_box :service_eq_any, { multiple: true }, [service_name], class: "form-check-input service-checkbox" %>
+                          <label class="form-check-label" for="serviceCheckbox<%= service_name %>"><%= service_key%></label>
+                          <span class="badge rounded-pill bg-secondary"><%= Provider.where(service: service_name).count %></span>
                         </div>
-                      </div>
-                 </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                <button
-                        class="accordion-button text-dark bg-light"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseFive"
-                        aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseFive"
-                        >
-                  Ratings
-                </button>
-              </h2>
-              <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingThree">
-                <div class="accordion-body">
-                  <!-- Default checkbox -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                      <i class="fas fa-star text-warning"></i>
-                    </label>
-                  </div>
-                  <!-- Default checkbox -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                      <i class="fas fa-star text-secondary"></i>
-                    </label>
-                  </div>
-                  <!-- Default checkbox -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-secondary"></i>
-                      <i class="fas fa-star text-secondary"></i>
-                    </label>
-                  </div>
-                  <!-- Default checkbox -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i>
-                      <i class="fas fa-star text-secondary"></i>
-                    </label>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            
+            <div class="m-3">
+              <%= f.submit "Search", class: "btn btn-secondary" %>
+              <%= link_to "Clear Filters", providers_path, class: "btn btn-outline-secondary ms-2" %>
+            </div>
+          <% end %>
+
+            
         </div>
       </div>

@@ -7,5 +7,8 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ProviderFilterController from "./provider_filter_controller"
+application.register("provider-filter", ProviderFilterController)
+
 import PurgeController from "./purge_controller"
 application.register("purge", PurgeController)
