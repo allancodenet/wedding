@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     member do
       delete :delete_image_attachment
     end
+    collection do
+      get :all, to: "providers#all"
+    end
   end
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   root "home#index"

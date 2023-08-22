@@ -4,7 +4,7 @@
         <div class="card  w-100 my-2 shadow-2-strong">
             <div id="carousel-<%= provider.id %>" class="carousel slide" data-bs-ride="false">
                     <div class="carousel-inner">
-                        <% provider.resized_images.each_with_index do |image, index| %>
+                        <% provider.images.each_with_index do |image, index| %>
                         <div class="carousel-item <%= 'active' if index == 0 %>">
                             <%= image_tag image, class: "card-img-top" %>
                         </div>

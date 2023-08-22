@@ -4,7 +4,8 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.all
+    @client = current_user.client
+    authorize @client, :show?
   end
 
   # GET /clients/1 or /clients/1.json

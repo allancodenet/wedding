@@ -22,8 +22,6 @@ class Provider < ApplicationRecord
   def validate_attachments_limit
     if images.length > 5
       errors.add(:images, "can't exceed 5 files")
-    elsif images.length < 5
-      errors.add(:images, "can't be less than 5 files")
     end
   end
 

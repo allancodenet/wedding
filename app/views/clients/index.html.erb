@@ -1,14 +1,14 @@
 
 
-<h1>Clients</h1>
+<h1>Your profile</h1>
 
-<div id="clients">
-  <% @clients.each do |client| %>
-    <%= render client %>
-    <p>
-      <%= link_to "Show this client", client %>
-    </p>
-  <% end %>
-</div>
+<% if policy(@client).show? %>
+  <%= render @client %>
+  <p>
+    <%= link_to "Show ", @client %>
+  </p>
+<% else %>
+  <p>You do not have a client yet.</p>
+<% end %>
 
-<%= link_to "New client", new_client_path %>
+ <%= link_to "Edit your profile", edit_client_path(@client) %> 

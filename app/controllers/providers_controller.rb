@@ -73,6 +73,10 @@ class ProvidersController < ApplicationController
     redirect_back(fallback_location: request.referer, notice: "Image deleted")
   end
 
+  def all
+    @providers = current_user.providers
+  end
+
   private
 
   def verify_role
