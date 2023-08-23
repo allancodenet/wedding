@@ -81,9 +81,9 @@
         <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><%=current_user.email %></span><img class="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
             <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
             <div>
-            <% if current_user.client%>
-                <%= link_to "Profile", client_path(current_user.client) , class: "dropdown-item"%>
-                <% elsif current_user.provider? %>
+            <% if current_user.client?%>
+                <%= link_to "Profile", client_path(current_user) , class: "dropdown-item"%>
+            <% elsif current_user.provider? %>
                <%= link_to "Profile", all_providers_path, class: "dropdown-item" %>
             <% end %>
             <div class="dropdown-divider"></div>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :clients
+  resources :clients, except: [:destroy]
   resources :providers do
     member do
       delete :delete_image_attachment

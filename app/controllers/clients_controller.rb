@@ -1,21 +1,19 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new create edit update destroy]
-
-  # GET /clients or /clients.json
-  def index
-    @client = current_user.client
-    authorize @client, :show?
-  end
-
+  # before_action :set_client!
   # GET /clients/1 or /clients/1.json
   def show
+    if current_user.client.present?
+      @client = current_user.client
+      authorize @client
+    else
+      redirect_to new_client_path(current_user)
+    end
   end
 
   # GET /clients/new
   def new
-    @client = Client.new
-    authorize @client
+    @client = current_user.build_client
   end
 
   # GET /clients/1/edit
@@ -41,6 +39,7 @@ class ClientsController < ApplicationController
 
   # PATCH/PUT /clients/1 or /clients/1.json
   def update
+    @client = Client.find params[:id]
     authorize @client
     respond_to do |format|
       if @client.update(client_params)
@@ -54,23 +53,10 @@ class ClientsController < ApplicationController
   end
 
   # DELETE /clients/1 or /clients/1.json
-  def destroy
-    @client = Client.find params[:id]
-    authorize @client
-    @client.destroy
-
-    respond_to do |format|
-      format.html { redirect_to clients_url, notice: "Client was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_client
-    @client = Client.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def client_params

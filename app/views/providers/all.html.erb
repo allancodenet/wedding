@@ -1,12 +1,19 @@
 
-<div class="container"> 
-<h1>All Providers Created by You</h1>
+<div class="container mt-3"> 
+<div class =" mt-4 d-flex align-items-center justify-content-around">
+<h3>Your Services</h3>
+<%= link_to "Create a service", new_provider_path , class: "btn btn-secondary"%>
+</div>
   <div class="row">
     <div class="col">
       <div class="row">
+      <% if @providers.present? %>
         <% @providers.each do |provider| %>
             <%= render provider %>
         <% end %>
+        <% else %>
+        <h3 class ="text-muted d-flex justify-content-center mt-3">No Services Yet</h3>
+      <% end %>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@ class Users::SessionsController < Devise::SessionsController
     if resource.role == "provider"
       providers_path
     elsif resource.role == "client"
-      clients_path
+      client_path(current_user)
     else
       root_path # Or any other default path if the role is not present or unknown
     end
