@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   resources :clients, except: [:destroy]
   resources :providers do
     member do
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
       get :all, to: "providers#all"
     end
   end
-  devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
+
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

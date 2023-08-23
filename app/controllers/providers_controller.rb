@@ -6,6 +6,11 @@ class ProvidersController < ApplicationController
   def index
     @q = Provider.ransack(params[:q])
     @providers = @q.result.with_attached_images
+
+    if params[:service].present?
+      @providers = @providers.where(service: params[:service])
+      flash.now[:success] = "Showing #{params[:service]}s."
+    end
   end
 
   # GET /providers/1 or /providers/1.json
