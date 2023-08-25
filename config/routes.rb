@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages
+  resources :conversations
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   resources :clients, except: [:destroy]
   resources :providers do
