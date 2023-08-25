@@ -1,0 +1,13 @@
+<h1>Conversation with <%= @conversation.other_party_name %></h1>
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+      <strong><%= message.sender.name %>:</strong> <%= message.content %>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_for [@conversation, @new_message] do |f| %>
+  <%= f.text_area :content, placeholder: 'Type your message...' %>
+  <%= f.submit 'Send Message' %>
+<% end %>

@@ -1,6 +1,7 @@
 class Provider < ApplicationRecord
   belongs_to :user
   has_many_attached :images, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
   validates :service, :name, :description, :location, presence: true
   validates :images, presence: true
   validate :validate_attachments_limit, :validate_attachment_formats

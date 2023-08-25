@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :messages
-  resources :conversations
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   resources :clients, except: [:destroy]
   resources :providers do
@@ -12,9 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
-  root "home#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :conversations do
+    resources :messages
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root "home#index"
 end

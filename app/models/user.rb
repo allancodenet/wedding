@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
   has_many :providers, dependent: :destroy
-  has_many :notifications, as: :recipient, dependent: :destroy
+
   has_one :client, dependent: :destroy
   validates :role, presence: true
 
