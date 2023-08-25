@@ -82,3 +82,5 @@ gem "bootstrap_form", "~> 5.2"
 gem "pundit", "~> 2.3"
 gem "open-uri"
 gem "ransack"
+
+gem "noticed", "~> 1.6"
