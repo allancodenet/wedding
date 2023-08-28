@@ -6,8 +6,6 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
-    @messages = @conversation.messages.order(created_at: :asc)
-    @new_message = Message.new
+    @new_message = Message.new(conversation: @conversation)
   end
 end
