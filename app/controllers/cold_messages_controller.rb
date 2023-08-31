@@ -10,7 +10,7 @@ class ColdMessagesController < ApplicationController
 
   def create
     message = Message.new(message_params.merge(conversation:, sender: client))
-    if message.save_and_notify(cold_message: true)
+    if message.save
       redirect_to message.conversation
     else
       @cold_message = cold_message(message)
@@ -21,7 +21,7 @@ class ColdMessagesController < ApplicationController
   private
 
   def cold_message(message)
-    ColdMessage.new(message:, show_hiring_fee_terms: permissions.pays_hiring_fee?)
+    ColdMessage.new(message:)
   end
 
   def require_client!
@@ -48,6 +48,6 @@ class ColdMessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body, :hiring_fee_agreement)
+    params.require(:message).permit(:content)
   end
 end

@@ -1,19 +1,6 @@
-<%= render "shared/flash" %>
-<%= form_with model: @message, url: provider_messages_path(@provider) do |form| %>
-  <% if message.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
 
-      <ul>
-        <% message.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= form.hidden_field :sender_type, value: current_user.class.name %>
-  <%= form.hidden_field :sender_id, value: current_user.id %>
-  <div>
+
+<div>
     <%= form.label :content, style: "display: block" %>
     <%= form.text_area :content %>
   </div>
@@ -23,4 +10,3 @@
   <div>
     <%= form.submit "Send" %>
   </div>
-<% end %>

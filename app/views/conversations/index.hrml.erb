@@ -1,6 +1,13 @@
-<h1>Your Conversations</h1>
-<ul>
-  <% @conversations.each do |conversation| %>
-    <li><%= link_to "Conversation with ", conversation %></li>
+
+<div class="min-vh-100 d-flex flex-column justify-content-center py-12 px-4 px-md-6 px-lg-8">
+  <% if @conversations.any? %>
+
+    <ul class="w-100 max-w-xl mx-auto rounded-lg overflow-hidden border border-2 border-gray-200 divide-y divide-gray-200 mt-8">
+      <%= render @conversations %>
+    </ul>
+  <% else %>
+    <div class="mt-8">
+    empty
+    </div>
   <% end %>
-</ul>
+</div>

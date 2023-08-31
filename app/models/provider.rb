@@ -2,7 +2,7 @@ class Provider < ApplicationRecord
   belongs_to :user
   has_many_attached :images, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
-  has_many :conversations, -> { visible }
+  has_many :conversations
 
   has_noticed_notifications
   validates :service, :name, :description, :location, presence: true
