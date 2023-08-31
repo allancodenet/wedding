@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get "cold_messages/new"
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   resources :clients, except: [:destroy]
   resources :providers do
-    resources :messages, only: %i[new create], controller: :messages
+    resources :messages, only: %i[new create], controller: :cold_messages
     member do
       delete :delete_image_attachment
     end
