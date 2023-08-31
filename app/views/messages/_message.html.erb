@@ -1,8 +1,13 @@
-<div id="<%= dom_id message %>">
-  <p>
-    <strong>Content:</strong>
-    <%= message.content %>
-  </p>
+<li class="bg-white px-4 py-6 shadow sm:rounded-lg sm:px-6">
+  <div class="sm:flex sm:justify-between sm:items-baseline">
+    <h3 class="text-base font-medium">
+     
+    </h3>
 
+    
+  </div>
 
-</div>
+  <div class="mt-4 text-sm text-gray-800 prose">
+    <%= raw message.content %>
+  </div>
+</li>

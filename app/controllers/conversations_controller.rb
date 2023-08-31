@@ -9,7 +9,7 @@ class ConversationsController < ApplicationController
     @conversation = conversation
     @message = Message.new(conversation: @conversation)
     # authorize @conversation
-    # @conversation.mark_notifications_as_read(current_user)
+    @conversation.mark_notifications_as_read(current_user)
   end
 
   private

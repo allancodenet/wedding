@@ -22,10 +22,6 @@ class Conversation < ApplicationRecord
     provider == user.provider
   end
 
-  def blocked?
-    provider_blocked_at.present? || client_blocked_at.present?
-  end
-
   def latest_message_read_by_other_recipient?(user)
     return false unless latest_message
 

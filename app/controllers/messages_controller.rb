@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_provider!
 
   def new
     @message = Message.new
@@ -8,41 +7,39 @@ class MessagesController < ApplicationController
 
   # POST /messages or /messages.json
   def create
-    # @conversation = Conversation.find(params[:conversation_id])
-    @message = Message.new(message_params)
-    # @message.sender = current_user
+    @message = Message.new(message_params.merge(conversation:, sender:))
+    # authorize @message
 
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to root_url(@message), notice: "Message was successfully created." }
-        format.json { render :show, status: :created, location: @message }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+    if @message.save_and_notify
+      respond_to do |format|
+        format.turbo_stream { @new_message = conversation.messages.build }
+        format.html { redirect_to conversation }
       end
+    else
+      render "conversations/show", status: :unprocessable_entity
     end
   end
 
   private
 
   def conversation
-    @conversation ||= Conversation.find_or_initialize_by(client:, provider:)
-  end
-
-  def set_provider!
-    @provider ||= Provider.find(params[:provider_id])
+    @conversation ||= Conversation.find(params[:conversation_id])
   end
 
   def provider
-    @provider ||= Provider.find(params[:provider_id])
+    conversation.provider
   end
 
-  def client
-    @client = current_user.client
+  def sender
+    if conversation.client?(current_user)
+      current_user.client
+    elsif conversation.provider?(current_user)
+      current_user.provider
+    end
   end
 
   # Only allow a list of trusted parameters through.
   def message_params
-    params.require(:message).permit(:content, :sender_type, :sender_id)
+    params.require(:message).permit(:content)
   end
 end
