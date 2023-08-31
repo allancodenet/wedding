@@ -11,6 +11,11 @@ class User < ApplicationRecord
       .left_joins(:provider, :client)
       .where("providers.user_id = ? OR clients.user_id = ?", user.id, user.id)
   }
+  has_many :unread_conversations,
+    class_name: :Conversation,
+    foreign_key: :user_with_unread_messages_id,
+    inverse_of: :user_with_unread_messages
+
   enum role: {
     client: 0,
     provider: 1

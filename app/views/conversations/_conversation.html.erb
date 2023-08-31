@@ -1,0 +1,24 @@
+<li class="list-group-item relative bg-white group">
+  <%= tag.div class: "border-l-4 py-5 px-6 #{conversation.unread_messages_for?(current_user) ? "border-blue-400" : "border-white"}" do %>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="min-w-0 flex-grow-1">
+        <%= link_to conversation_path(conversation), class: "d-block text-decoration-none" do %>
+          <span class="position-absolute inset-0" aria-hidden="true"></span>
+          <h2 class="h6 text-gray-900 overflow-hidden text-truncate">
+            <% if conversation.deleted_client_or_provider? %>
+              <%= t("deleted_account") %>
+            <% else %>
+              <%= conversation.other_recipient(current_user).name %>
+            <% end %>
+          </h2>
+        <% end %>
+      </div>
+      <span class="small text-gray-500">
+        <%= time_ago_in_words(conversation.messages.last.updated_at) %> ago
+      </span>
+    </div>
+    <div class="mt-1">
+      <p class="text-truncate text-sm text-gray-600"><%= conversation.messages.last.content %></p>
+    </div>
+  <% end %>
+</li>
