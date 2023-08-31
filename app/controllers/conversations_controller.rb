@@ -6,6 +6,6 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @new_message = Message.new(conversation: @conversation)
+    @message = Message.new
   end
 end

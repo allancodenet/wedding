@@ -1,13 +1,6 @@
-<h1>Conversation with </h1>
-<ul>
-  <% @messages.each do |message| %>
-    <li>
-      <strong><%= message.sender.name %>:</strong> <%= message.content %>
-    </li>
-  <% end %>
-</ul>
 
-<%= form_for [@conversation, @new_message] do |f| %>
+
+<%= form_for [@conversation, @message] do |f| %>
   <%= f.text_area :content, placeholder: 'Type your message...' %>
   <%= f.submit 'Send Message' %>
 <% end %>

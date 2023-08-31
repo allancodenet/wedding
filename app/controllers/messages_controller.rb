@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @message = Message.new
+  end
+
   # POST /messages or /messages.json
   def create
     @conversation = Conversation.find(params[:conversation_id])
@@ -18,8 +22,22 @@ class MessagesController < ApplicationController
     end
   end
 
+  private
+
+  def conversation
+    @conversation ||= Conversation.find_or_initialize_by(client:, provider:)
+  end
+
+  def provider
+    @provider ||= Provider.find(params[:provider_id])
+  end
+
+  def client
+    @client = current_user.client
+  end
+
   # Only allow a list of trusted parameters through.
   def message_params
-    params.require(:message).permit(:content, :sender_id)
+    params.require(:message).permit(:content)
   end
 end
