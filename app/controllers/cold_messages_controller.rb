@@ -26,7 +26,7 @@ class ColdMessagesController < ApplicationController
 
   def require_client!
     unless client.present?
-      redirect_back(fallback_location: providers_path, notice: "Must be a client to initiate a conversation")
+      redirect_to providers_path, warning: "Must be a client to initiate a conversation"
     end
   end
 
