@@ -26,7 +26,8 @@ class ColdMessagesController < ApplicationController
 
   def require_client!
     unless client.present?
-      redirect_to providers_path, warning: "Must be a client to initiate a conversation"
+      flash[:warning] = "Must be a client to initiate a conversation"
+      redirect_to providers_path, warning:
     end
   end
 

@@ -1,15 +1,10 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @message = Message.new
-  end
-
   # POST /messages or /messages.json
   def create
     @message = Message.new(message_params.merge(conversation:, sender:))
     # authorize @message
-
     if @message.save
       respond_to do |format|
         format.turbo_stream { @new_message = conversation.messages.build }
@@ -33,8 +28,8 @@ class MessagesController < ApplicationController
   def sender
     if conversation.client?(current_user)
       current_user.client
-    elsif conversation.provider?(current_user)
-      current_user.provider
+    else
+      conversation.provider
     end
   end
 
