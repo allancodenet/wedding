@@ -19,7 +19,7 @@ class Conversation < ApplicationRecord
   end
 
   def provider?(user)
-    provider == user.provider
+    provider == user.providers
   end
 
   def latest_message_read_by_other_recipient?(user)

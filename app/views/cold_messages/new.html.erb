@@ -1,3 +1,10 @@
-  <%= form_with model: [@cold_message.provider, @cold_message.message], class: "relative" do |form| %>
-        <%= render "messages/form", form: form %>
-  <% end %>
+<div>
+      <h4 class= "text-muted">
+            start chatting with <br>
+            <%= @cold_message.provider.name %>
+      </h4>
+
+      <%= form_with model: [@cold_message.provider, @cold_message.message], class: "relative" do |form| %>
+            <%= render "messages/form", form: form %>
+      <% end %>
+</div>

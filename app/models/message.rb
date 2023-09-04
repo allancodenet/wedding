@@ -6,7 +6,8 @@ class Message < ApplicationRecord
 
   has_noticed_notifications
   validates :content, presence: true
-  after_create_commit :cache_conversation_read_status
+  # after_create_commit :cache_conversation_read_status
+  scope :from_provider, -> { where(sender_type: Provider.name) }
 
   def cache_conversation_read_status
     conversation.update!(user_with_unread_messages: recipient&.user)
@@ -21,7 +22,7 @@ class Message < ApplicationRecord
   end
 
   def sender?(user)
-    [user.provider, user.client].include?(sender)
+    [user.client, user.providers].include?(sender)
   end
 
   def recipient
@@ -36,8 +37,8 @@ class Message < ApplicationRecord
     notifications_as_message.where(recipient:).last
   end
 
-  def content=(text)
-    super(text)
-    self[:content_html] = FORMAT.call(text)
-  end
+  # def content=(text)
+  #   super(text)
+  #   self[:content_html] = FORMAT.call(text)
+  # end
 end

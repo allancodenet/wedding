@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params.merge(conversation:, sender:))
     # authorize @message
 
-    if @message.save_and_notify
+    if @message.save
       respond_to do |format|
         format.turbo_stream { @new_message = conversation.messages.build }
         format.html { redirect_to conversation }
@@ -26,8 +26,8 @@ class MessagesController < ApplicationController
     @conversation ||= Conversation.find(params[:conversation_id])
   end
 
-  def provider
-    conversation.provider
+  def client
+    conversation.client
   end
 
   def sender

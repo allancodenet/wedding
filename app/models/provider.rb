@@ -3,6 +3,7 @@ class Provider < ApplicationRecord
   has_many_attached :images, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many :conversations
+  has_many :messages, -> { where(sender_type: Provider.name) }, through: :conversations
 
   has_noticed_notifications
   validates :service, :name, :description, :location, presence: true

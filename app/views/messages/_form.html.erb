@@ -1,12 +1,10 @@
 
 
 <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
-
-
-
-  <div>
+    <%= form.label :content, class: "sr-only" %>
+    <%= form.text_area :content, placeholder: "Write a message", required: "true" %>
+    <div>
     <%= form.submit "Send" %>
-  </div>
+    </div>
+    
+</div>
