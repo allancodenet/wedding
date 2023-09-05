@@ -14,14 +14,23 @@ class MessageNotification < Noticed::Base
   # Add required params
   #
   param :message
+  param :conversation
 
   # Define helper methods to make rendering easier.
   #
+  def title
+    " Message from #{message.sender.name}"
+  end
+
+  def url
+    conversation_path(conversation)
+  end
+
   def message
     params[:message]
   end
 
-  def url
-    message_path(params[:content])
+  def conversation
+    params[:conversation]
   end
 end

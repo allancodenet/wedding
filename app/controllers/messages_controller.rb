@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params.merge(conversation:, sender:))
     # authorize @message
-    if @message.save
+    if @message.save_and_notify
       respond_to do |format|
         format.turbo_stream { @new_message = conversation.messages.build }
         format.html { redirect_to conversation }

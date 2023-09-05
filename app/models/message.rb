@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+  include Messages::Notifications
   belongs_to :conversation, touch: true
   belongs_to :sender, polymorphic: true, touch: true
   has_one :client, through: :conversation
@@ -6,7 +7,7 @@ class Message < ApplicationRecord
 
   has_noticed_notifications
   validates :content, presence: true
-  # after_create_commit :cache_conversation_read_status
+  after_create_commit :cache_conversation_read_status
   scope :from_provider, -> { where(sender_type: Provider.name) }
 
   def cache_conversation_read_status

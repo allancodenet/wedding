@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = current_user.notifications.newest_first.unread
-    @previous_notifications = current_user.notifications.newest_first.read
+    @read_notifications = current_user.notifications.newest_first.read
   end
 
   def show

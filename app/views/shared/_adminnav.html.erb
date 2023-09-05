@@ -1,14 +1,18 @@
 <ul class="navbar-nav flex-nowrap ms-auto">
         <li class="nav-item dropdown no-arrow mx-1">
-            <div class="nav-item dropdown no-arrow"><a class=" nav-link" aria-expanded="false"  href="/notifications">
-            <span class="badge bg-danger badge-counter"><%= Notification.count %></span><i class="fas fa-bell fa-fw"></i></a>
-                
+            <div class="nav-item dropdown no-arrow">
+            <a class=" nav-link" aria-expanded="false"  href="/notifications">
+                <% if current_user.notifications.unread.any? %>
+                <span class="badge bg-danger badge-counter"><%= current_user.notifications.unread.count %></span>
+                <% end %>  
+                <i class="fas fa-bell fa-fw"></i>
+               </a>
             </div>
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
             <div class="nav-item dropdown no-arrow">
             <a class=" nav-link" aria-expanded="false"  href="/conversations">
-            <span class="badge bg-danger badge-counter"><%= Conversation.count %></span>
+            <span class="badge bg-danger badge-counter"><%= current_user.id%></span>
             <i class="fas fa-envelope fa-fw"></i></a>
             </div>
         </li>
