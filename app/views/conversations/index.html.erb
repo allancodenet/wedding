@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
-        <div class="col-12 col-md-8 mx-auto rounded-lg overflow-hidden border border-gray-200 mt-3">
-            <div class="d-flex flex-column justify-content-center  align-items-center py-12 px-4 px-md-6 px-lg-8">
-               <h3 class ="fw-bold">Inbox</h3>
+        <div class="col-12 col-md-8 mx-auto rounded text-wrap border mt-3">
+            <div class="d-flex flex-column   align-items-center ">
+               <h3 class ="fw-bold p-2">Inbox</h3>
+                  <hr>
               <% if @conversations.any? %>
 
-                <ul class="w-100 max-w-xl mx-auto rounded-lg overflow-hidden border border-2 border-gray-200 divide-y divide-gray-200 mt-8">
+                <div class="w-100 max-w-xl mx-auto rounded text-wrap p-2 border mt-8">
                   <%= render @conversations %>
-                </ul>
+                </div>
               <% else %>
                 <div class="mt-8">
                   <h3 class ="text-mutes">No messages yet</h3>

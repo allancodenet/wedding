@@ -1,27 +1,36 @@
-<div>
-  <h3>chatting with</h3>
-  <br>
-  <%= @conversation.other_recipient(current_user).name %>
+<div class="container">
+  <div class="row">
+        <div class="col-12 col-md-8 mx-auto rounded text-wrap border mt-3">
+            <div class="">
+               <h3 class ="fw-bold p-2"> 
+               <span class ="text-muted">Chatting with</span>
+               <%= @conversation.other_recipient(current_user).name %></h3>
+                  <hr>
+                <div class=" ">
+                    <%= render @conversation.messages %>
+                </div>
+                <div class="">
+                      <%= turbo_frame_tag "new_message" do %>
+                        <%= render "conversations/new_message", conversation: @conversation, message: @message %>
+                      <% end %>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 <%# <%= render "shared/error_messages", resource: @message %> 
 
-<div class="min-h-full max-w-2xl mx-auto py-12 sm:px-6 lg:px-8">
-  
 
-  <div id="messages" class="mt-8 space-y-2">
-    <%= render @conversation.messages %>
-  </div>
-
- 
-
-  <div class="mt-8 max-w-prose w-full mx-auto px-4 sm:px-0 pb-6">
- 
-      <div class="mt-4">
-        <%= turbo_frame_tag "new_message" do %>
-          <%= render "conversations/new_message", conversation: @conversation, message: @message %>
-        <% end %>
-      </div>
-  
-     
-</div>
