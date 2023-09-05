@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "cold_messages/new"
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   resources :clients, except: [:destroy]
   resources :providers do
@@ -15,6 +14,10 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
-
+  resources :notifications, only: %i[index show] do
+    collection do
+      post "/mark_as_read", to: "notifications#read_all", as: :read
+    end
+  end
   root "home#index"
 end
