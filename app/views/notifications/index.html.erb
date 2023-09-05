@@ -1,27 +1,27 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-8 mx-auto rounded-lg overflow-hidden border border-gray-200 mt-3">
-     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1>Notifications</h1>
-      <%= button_to read_notifications_path, method: :post, class: "btn btn-primary" do %>
-        Mark all as read
-      <% end %>
-    </div>
+    <div class="col-12 col-md-8 mx-auto rounded text-wrap border mt-3">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Notifications</h3>
+        <%= button_to read_notifications_path, method: :post, class: "btn btn-secondary" do %>
+          Mark all as read
+        <% end %>
+      </div>
+          <hr>
+        <h3 >Unread notifications</h3>
+          <% if @notifications.any? %>
+            <%= render @notifications %>
+            
+          <% else %>
+            <div class="mb-3">No new notifications</div>
+            <hr>
+          <% end %>
 
- 
-   <h3 class= "me-8">Unread notifications</h3>
-    <% if @notifications.any? %>
-      <%= render @notifications %>
-    <% else %>
-      <div class="mb-3">No new notifications</div>
-    <% end %>
-
-    <% if @read_notifications.any? %>
-      <h4>Read notifications</h4>
-      <%= render(partial: "notification", collection: @read_notifications) %>
-    <% end %>
-
+          <% if @read_notifications.any? %>
+            <h4>Past notifications</h4>
+            <%= render(partial: "notification", collection: @read_notifications) %>
+          <% end %>
     </div>
   </div>
 </div>

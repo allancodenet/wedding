@@ -1,4 +1,4 @@
-<li class="list-group-item relative bg-white group">
+
   <%= tag.div class: "border-l-4 py-5 px-6 #{conversation.unread_messages_for?(current_user) ? "border-blue-400" : "border-white"}" do %>
     <div class="d-flex justify-content-between align-items-center">
       <div class="min-w-0 flex-grow-1">
@@ -13,7 +13,7 @@
           </h2>
         <% end %>
       </div>
-      <span class="small text-gray-500">
+      <span class=" text-muted">
         <%= time_ago_in_words(conversation.messages.last.updated_at) %> ago
       </span>
     </div>
@@ -21,4 +21,4 @@
       <p class="text-truncate text-sm text-gray-600"><%= conversation.messages.last.content %></p>
     </div>
   <% end %>
-</li>
+
