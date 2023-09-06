@@ -329,7 +329,7 @@ DEPENDENCIES
   pundit (~> 2.3)
   rails (~> 7.0.6)
   ransack
-  redis (~> 4.0)
+  redis
   selenium-webdriver
   sprockets-rails
   standard

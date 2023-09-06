@@ -1,10 +1,15 @@
-<div>
-      <h4 class= "text-muted">
-            start chatting with <br>
-            <%= @cold_message.provider.name %>
-      </h4>
+<div class= "container mt-4">
+   <div class="row">
+         <div class = "col-12 col-md-8 mx-auto rounded text-wrap border mt-3">
+      
+                  <h4 class= "text-muted  d-flex justify-content-center align-items-center">
+                        Start chatting with 
+                        <%= @cold_message.provider.name %>
+                  </h4>
 
-      <%= form_with model: [@cold_message.provider, @cold_message.message], class: "relative" do |form| %>
-            <%= render "messages/form", form: form %>
-      <% end %>
+                  <%= form_with model: [@cold_message.provider, @cold_message.message], class: "relative" do |form| %>
+                        <%= render "messages/form", form: form %>
+                  <% end %>
+            </div>
+   </div>
 </div>
