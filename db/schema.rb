@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_05_133553) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_072756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_133553) do
     t.index ["provider_id"], name: "index_conversations_on_provider_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_likes_on_client_id"
+    t.index ["record_type", "record_id"], name: "index_likes_on_record"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content", null: false
     t.string "sender_type"
@@ -99,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_133553) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.text "motto"
+    t.integer "likes_count", default: 0
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
@@ -118,6 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_133553) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clients", "users"
+  add_foreign_key "likes", "clients"
   add_foreign_key "messages", "conversations"
   add_foreign_key "providers", "users"
 end

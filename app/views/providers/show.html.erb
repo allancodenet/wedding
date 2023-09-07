@@ -34,7 +34,7 @@
                 4.5
               </span>
             </div>
-            <span class="text-muted"><i class="fas fa-heart text-danger fa-sm mx-1"></i>154 Likes</span>
+            <span class="text-muted"><i class="fas fa-heart text-danger fa-sm mx-1"></i><%= @provider.likes_count %></span>
           </div>
 
 
@@ -61,13 +61,15 @@
          
             
           </div>
-          <% if @conversations.present? %>
-          <%= link_to "Message", conversation_path(conversation), class: "btn btn-warning shadow-0" %>
-            
-          <% else %>
-          <%= link_to "Message", new_provider_message_path(@provider), class: "btn btn-warning shadow-0" %>
-          <% end %>
-          <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart text-danger fa-lg"></i> Like</a>
+            <div class= "d-flex ">
+              <% if @conversations.present? %>
+              <%= link_to "Message", conversation_path(conversation), class: "btn btn-warning shadow-0" %>
+                
+              <% else %>
+              <%= link_to "Message", new_provider_message_path(@provider), class: "btn btn-warning shadow-0" %>
+              <% end %>
+              <%= render "like" %>
+            </div>
         </div>
       </main>
     </div>

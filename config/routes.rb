@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   resources :clients, except: [:destroy]
   resources :providers do
+    resource :like, controller: :likes
     resources :messages, only: %i[new create], controller: :cold_messages
     member do
       delete :delete_image_attachment

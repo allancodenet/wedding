@@ -1,6 +1,7 @@
 class Provider < ApplicationRecord
   belongs_to :user
   has_many_attached :images, dependent: :destroy
+  has_many :likes, as: :record
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many :conversations
   has_many :messages, -> { where(sender_type: Provider.name) }, through: :conversations
@@ -19,6 +20,18 @@ class Provider < ApplicationRecord
     MC: 5,
     sound: 6
   }
+
+  def liked_by?(client)
+    likes.where(client: client).any?
+  end
+
+  def like(client)
+    likes.where(client: client).first_or_create
+  end
+
+  def unlike(client)
+    likes.where(client: client).destroy_all
+  end
 
   def self.ransackable_attributes(auth_object = nil)
     %w[service]
