@@ -5,7 +5,6 @@ class LikesController < ApplicationController
   before_action :client
 
   def update
-    binding.break
     if @provider.liked_by?(client)
       @provider.unlike(client)
     else

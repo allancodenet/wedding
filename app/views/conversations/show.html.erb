@@ -6,7 +6,7 @@
                <span class ="text-muted">Chatting with</span>
                <%= @conversation.other_recipient(current_user).name %></h3>
                   <hr>
-                <div class=" ">
+                <div id ="messages">
                     <%= render @conversation.messages %>
                 </div>
                 <div class="">
