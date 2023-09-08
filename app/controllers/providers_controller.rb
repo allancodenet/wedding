@@ -5,7 +5,7 @@ class ProvidersController < ApplicationController
   # GET /providers or /providers.json
   def index
     @q = Provider.ransack(params[:q])
-    @providers = @q.result.with_attached_images
+    @providers = @q.result.with_attached_images.order(created_at: :desc)
 
     if params[:service].present?
       @providers = @providers.where(service: params[:service])
