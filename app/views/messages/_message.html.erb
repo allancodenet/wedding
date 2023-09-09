@@ -1,4 +1,6 @@
-<div class="border rounded mt-3 p-2">
+ <%# <%= turbo_stream_from "messages" %> 
+ <%= tag.div class: "border rounded mt-3 p-2, #{ message.sender?(current_user)? "bg-light" : "bg-secondary" }" do%>
+<%# <div class="border rounded mt-3 p-2 bg-primary"> %>
   <div class="d-flex justify-content-between">
     <h3 class="fs-5">
   
@@ -15,4 +17,5 @@
     <div class="fs-4 fw-bold">
       <%= raw message.content %>
     </div>
-</div>
+<%# </div> %>
+<% end %>

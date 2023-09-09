@@ -1,4 +1,4 @@
- <% unless controller_name = "home" %>
+ <% unless controller_name == "home" %>
    <div class ="container">
    <% if flash[:notice].present? %>
       <div class=" mt-2 alert alert-success">

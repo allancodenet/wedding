@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   # POST /messages or /messages.json
   def create
     @message = Message.new(message_params.merge(conversation:, sender:))
+    # binding.break
     # authorize @message
     if @message.save_and_notify
       respond_to do |format|

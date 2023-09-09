@@ -8,6 +8,7 @@ class Message < ApplicationRecord
   has_noticed_notifications
   validates :content, presence: true
   after_create_commit :cache_conversation_read_status
+  # after_create_commit { broadcast_to("messages") }
   scope :from_provider, -> { where(sender_type: Provider.name) }
 
   def cache_conversation_read_status
@@ -23,7 +24,7 @@ class Message < ApplicationRecord
   end
 
   def sender?(user)
-    [user.client, user.providers].include?(sender)
+    [user.client, user.providers.find { |provider| provider == sender }].include?(sender)
   end
 
   def recipient

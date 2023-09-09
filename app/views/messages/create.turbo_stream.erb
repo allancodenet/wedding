@@ -1,3 +1,4 @@
+<%= turbo_stream_from "messages" %>
 <%= turbo_stream.append "messages" do %>
   <%= render @message %>
 <% end %>
