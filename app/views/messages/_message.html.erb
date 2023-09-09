@@ -1,21 +1,18 @@
- <%# <%= turbo_stream_from "messages" %> 
- <%= tag.div class: "border rounded mt-3 p-2, #{ message.sender?(current_user)? "bg-light" : "bg-secondary" }" do%>
-<%# <div class="border rounded mt-3 p-2 bg-primary"> %>
-  <div class="d-flex justify-content-between">
-    <h3 class="fs-5">
-  
-        <span class="text-muted fw-bolder"><%= message.sender?(current_user) ? t("you") : message.sender.name %></span>
-        <span class="text-muted"><%= t("wrote") %></span>
  
-    </h3>
-     <span class=" text-muted">
-        <%= time_ago_in_words(message.created_at).capitalize %> ago
-      </span>
+ 
+ 
+ <%= turbo_frame_tag dom_id(message) do %>
+ <%= tag.div class: "border rounded mt-3 p-2 #{ message.sender?(Current.user)? "bg-light " : "bg-secondary " }" do%> 
+  <div class="d-flex justify-content-between ">
+        <span class="text-muted fw-bolder"><%= message.sender?(Current.user) ? "You" : message.sender.name %></span>
+        <span class=" text-muted">
+            <%= time_ago_in_words(message.created_at).capitalize %> ago
+        </span>
     
   </div>
 
     <div class="fs-4 fw-bold">
       <%= raw message.content %>
     </div>
-<%# </div> %>
+<% end %>
 <% end %>

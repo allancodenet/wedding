@@ -8,8 +8,20 @@ class Message < ApplicationRecord
   has_noticed_notifications
   validates :content, presence: true
   after_create_commit :cache_conversation_read_status
-  # after_create_commit { broadcast_to("messages") }
+  after_create_commit :broadcast_message
   scope :from_provider, -> { where(sender_type: Provider.name) }
+
+  def broadcast_message
+    # Broadcast the Turbo Stream for appending the new message to the "messages" container
+    broadcast_append_to("messages", target: "messages") do
+      render partial: "messages/message", locals: {message: self}
+    end
+
+    # Broadcast the Turbo Stream for updating the "new_message" element
+    broadcast_update_to("new_message", target: "new_message") do
+      render "conversations/new_message", conversation: conversation, message: self
+    end
+  end
 
   def cache_conversation_read_status
     conversation.update!(user_with_unread_messages: recipient&.user)
@@ -24,7 +36,11 @@ class Message < ApplicationRecord
   end
 
   def sender?(user)
-    [user.client, user.providers.find { |provider| provider == sender }].include?(sender)
+    user_client = user.client
+    user_providers = user.providers
+
+    # Check if the sender matches the user's client or is one of the providers
+    [user_client, user_providers.find { |provider| provider == sender }].include?(sender)
   end
 
   def recipient
@@ -38,9 +54,4 @@ class Message < ApplicationRecord
   def latest_notification_for_recipient(recipient)
     notifications_as_message.where(recipient:).last
   end
-
-  # def content=(text)
-  #   super(text)
-  #   self[:content_html] = FORMAT.call(text)
-  # end
 end

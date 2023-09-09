@@ -7,13 +7,14 @@
                <span class ="text-muted">Chatting with</span>
                <%= @conversation.other_recipient(current_user).name %></h3>
                   <hr>
-                <div id ="messages">
+                  <%= turbo_stream_from "messages" %>
+                <div id ="messages", data-controller="chat">
                     <%= render @conversation.messages %>
                 </div>
                 <div class="">
-                      <%= turbo_frame_tag "new_message" do %>
+                      </div id ="new_message" do %>
                         <%= render "conversations/new_message", conversation: @conversation, message: @message %>
-                      <% end %>
+                      </div>
                   </div>
               </div>
             </div>
