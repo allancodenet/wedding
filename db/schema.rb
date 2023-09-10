@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_17_102131) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_072756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,49 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_102131) do
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "provider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_with_unread_messages_id"
+    t.index ["client_id"], name: "index_conversations_on_client_id"
+    t.index ["provider_id"], name: "index_conversations_on_provider_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_likes_on_client_id"
+    t.index ["record_type", "record_id"], name: "index_likes_on_record"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content", null: false
+    t.string "sender_type"
+    t.bigint "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "conversation_id", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["sender_type", "sender_id"], name: "index_messages_on_sender"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
   create_table "providers", force: :cascade do |t|
     t.integer "service"
     t.string "name"
@@ -66,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_102131) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.text "motto"
+    t.integer "likes_count", default: 0
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
@@ -85,5 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_102131) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clients", "users"
+  add_foreign_key "likes", "clients"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "providers", "users"
 end

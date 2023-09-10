@@ -5,7 +5,12 @@ class ProvidersController < ApplicationController
   # GET /providers or /providers.json
   def index
     @q = Provider.ransack(params[:q])
-    @providers = @q.result.with_attached_images
+    @providers = @q.result.with_attached_images.order(created_at: :desc)
+
+    if params[:service].present?
+      @providers = @providers.where(service: params[:service])
+      flash.now[:success] = "Showing #{params[:service]}s."
+    end
   end
 
   # GET /providers/1 or /providers/1.json
@@ -71,6 +76,10 @@ class ProvidersController < ApplicationController
     @image = ActiveStorage::Attachment.find(params[:id])
     @image.purge
     redirect_back(fallback_location: request.referer, notice: "Image deleted")
+  end
+
+  def all
+    @providers = current_user.providers
   end
 
   private

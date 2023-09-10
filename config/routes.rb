@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
-  resources :clients
+  devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
+  resources :clients, except: [:destroy]
   resources :providers do
+    resource :like, controller: :likes
+    resources :messages, only: %i[new create], controller: :cold_messages
     member do
       delete :delete_image_attachment
     end
+    collection do
+      get :all, to: "providers#all"
+    end
   end
-  devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
-  root "home#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :conversations do
+    resources :messages
+  end
+  resources :notifications, only: %i[index show] do
+    collection do
+      post "/mark_as_read", to: "notifications#read_all", as: :read
+    end
+  end
+  root "home#index"
 end

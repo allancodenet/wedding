@@ -27,12 +27,15 @@
                     <div>
                       <% Provider.services.keys.each do |service_key| %>
                         <% service_name = Provider.services[service_key] %>
-                        <div class="form-check">
-                          <%= f.check_box :service_eq_any, { multiple: true }, [service_name], class: "form-check-input service-checkbox" %>
-                          <label class="form-check-label" for="serviceCheckbox<%= service_name %>"><%= service_key%></label>
-                          <span class="badge rounded-pill bg-secondary"><%= Provider.where(service: service_name).count %></span>
-                        </div>
+                        <%= f.collection_check_boxes :service_eq_any, [service_name], :to_s, :to_s do |b| %>
+                          <div class="form-check">
+                            <%= b.check_box %>
+                            <label class="form-check-label" for="serviceCheckbox<%= service_name %>"><%= service_key %></label>
+                            <span class="badge rounded-pill bg-secondary"><%= Provider.where(service: service_name).count %></span>
+                          </div>
+                        <% end %>
                       <% end %>
+
                     </div>
                   </div>
                 </div>

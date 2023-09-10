@@ -4,11 +4,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   layout "user"
+
   def after_sign_up_path_for(resource)
     if resource.role == "provider"
       providers_path
     elsif resource.role == "client"
-      clients_path
+      new_client_path(current_user)
     else
       root_path # Or any other default path if the role is not present or unknown
     end

@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="row">
+        <div class="col-12 col-md-8 mx-auto rounded text-wrap border mt-3">
+            <div class="">
+               <h3 class ="fw-bold p-2"> 
+               <span class ="text-muted">Chatting with</span>
+               <%= @conversation.other_recipient(current_user).name %></h3>
+                  <hr>
+                  <%= turbo_stream_from "messages" %>
+                <div id ="messages", data-controller="chat">
+                    <%= render @conversation.messages %>
+                </div>
+                <div class="">
+                      </div id ="new_message" do %>
+                        <%= render "conversations/new_message", conversation: @conversation, message: @message %>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<%# <%= render "shared/error_messages", resource: @message %> 
+
+

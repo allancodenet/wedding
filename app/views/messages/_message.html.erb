@@ -1,0 +1,18 @@
+ 
+ 
+ 
+ <%= turbo_frame_tag dom_id(message) do %>
+ <%= tag.div class: "border rounded mt-3 p-2 #{ message.sender?(Current.user)? "bg-light " : "bg-secondary " }" do%> 
+  <div class="d-flex justify-content-between ">
+        <span class="text-muted fw-bolder"><%= message.sender?(Current.user) ? "You" : message.sender.name %></span>
+        <span class=" text-muted">
+            <%= time_ago_in_words(message.created_at).capitalize %> ago
+        </span>
+    
+  </div>
+
+    <div class="fs-4 fw-bold">
+      <%= raw message.content %>
+    </div>
+<% end %>
+<% end %>
