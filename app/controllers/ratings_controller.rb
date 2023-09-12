@@ -1,4 +1,6 @@
 class RatingsController < ApplicationController
+  include ActionView::RecordIdentifier
+
   before_action :authenticate_user!
   before_action :record
   before_action :rater

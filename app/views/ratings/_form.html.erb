@@ -1,10 +1,17 @@
 
-<div class = "container mt-3 ">
+<div class = "container ">
+<div class="row justify-content-center">
+<div class="col-lg-4 col-12 border mt-3">
 <%= bootstrap_form_for [@provider, @rating] do |f| %>
 <%= render "shared/errors", record: @rating %>
   <p>
    <span class=" text-success fw-bold">  Kindly rate out of 5</span>
-    <%= f.select :star, options_for_select([1, 2, 3, 4, 5]) %>
+ <%= f.radio_button :star, 1 %> 
+<%= f.radio_button :star, 2 %> 
+<%= f.radio_button :star, 3 %> 
+<%= f.radio_button :star, 4 %> 
+<%= f.radio_button :star, 5 %> 
+
   </p>
     
 
@@ -12,4 +19,6 @@
     <%= f.submit 'Submit Rating', class: 'btn btn-primary' %>
   </p>
 <% end %>
+</div>
+</div>
 </div>
