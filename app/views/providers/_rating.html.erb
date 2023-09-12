@@ -1,6 +1,6 @@
 
 <% if @provider.rated_by?(current_user&.client) %>
-              <%= link_to " Edit Rating", edit_provider_rating_path(@provider ,@provider.rating_ids), class: " btn btn-primary fa fa-edit" %>
+              <%= link_to " Edit Rating", edit_provider_rating_path(@provider ,@provider.rating_ids), class: " btn btn-outline-primary p-2 fa fa-edit" %>
               <% else %>
-              <%= link_to "Rate", new_provider_rating_path(@provider) , class: " btn btn-primary fa fa-star" %>
+              <%= link_to "Rate", new_provider_rating_path(@provider) , class: " btn btn-outline-primary p-2  fa fa-star text-warning " %>
  <% end %>

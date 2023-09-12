@@ -15,6 +15,8 @@ class ProvidersController < ApplicationController
 
   # GET /providers/1 or /providers/1.json
   def show
+    @provider = Provider.find params[:id]
+    @providers = Provider.limit(3)
   end
 
   # GET /providers/new
