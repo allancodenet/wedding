@@ -2,10 +2,15 @@ class RatingsController < ApplicationController
   before_action :authenticate_user!
   before_action :record
   before_action :rater
+  before_action :require_rater!
 
   def new
     console
-    @rating = Rating.new
+    if @provider.rated_by?(current_user.client)
+      redirect_to @provider
+    else
+      @rating = Rating.new
+    end
   end
 
   def edit
@@ -43,6 +48,13 @@ class RatingsController < ApplicationController
   end
 
   private
+
+  def require_rater!
+    unless rater.present?
+      flash[:warning] = "Must be a client to rate"
+      redirect_to @provider
+    end
+  end
 
   def rater
     current_user.client
