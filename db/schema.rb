@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_072756) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_233724) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -110,7 +110,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_072756) do
     t.bigint "user_id", null: false
     t.text "motto"
     t.integer "likes_count", default: 0
+    t.integer "ratings_count", default: 0
+    t.decimal "average_rating", precision: 2
     t.index ["user_id"], name: "index_providers_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "star"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "rater_type", null: false
+    t.bigint "rater_id", null: false
+    t.index ["rater_type", "rater_id"], name: "index_ratings_on_rater"
+    t.index ["record_type", "record_id"], name: "index_ratings_on_record"
   end
 
   create_table "users", force: :cascade do |t|
