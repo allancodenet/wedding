@@ -64,7 +64,7 @@ end
 
   # Attach images to the provider
   5.times do
-    image_url = Faker::LoremFlickr.image(size: "1400x800", search_terms: ["nature", "landscape"])
+    image_url = Faker::LoremFlickr.image(size: "1400x800", search_terms: ["wedding"])
     image = URI.open(image_url)
     provider.images.attach(io: image, filename: "#{Faker::Alphanumeric.alpha(number: 10)}.jpg")
   end

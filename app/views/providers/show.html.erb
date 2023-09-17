@@ -1,13 +1,13 @@
 
 
-<div class ="container">
+<div class ="container mt-3 ">
  <%= link_to "Back to providers", providers_path, class: " fa fa-arrow-circle-left" %> |
 <% if policy(@provider).edit? %>
   <%= link_to "Edit this provider", edit_provider_path(@provider), class: "fas fa-edit mx-2" %> |
 <% end %>
  
 <% if policy(@provider).destroy? %>
- <%= button_to "Delete this provider", @provider, method: :delete, class: "btn  btn-danger mt-2" %>
+ <%= button_to "Delete this provider", @provider, method: :delete, class: "btn  btn-danger mt-2 " %>
 <% end %>
   
 </div>

@@ -97,6 +97,6 @@ class ProvidersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def provider_params
-    params.require(:provider).permit(:service, :name, :motto, :description, :website, :instagram, :tiktok, :location, images: [])
+    params.require(:provider).permit(:service, :name, :motto, :description, :website, :instagram, :tiktok, :facebook, :phone_number, :location, images: [])
   end
 end

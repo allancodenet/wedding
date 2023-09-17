@@ -19,7 +19,15 @@ class Provider < ApplicationRecord
     decorator: 3,
     makeup: 4,
     MC: 5,
-    sound: 6
+    sound: 6,
+    barber: 7,
+    videography: 8,
+    gowns: 9,
+    shoes: 10,
+    rings: 11,
+    maids_outfit: 12,
+    grooms_outfit: 13
+
   }
 
   def liked_by?(client)
