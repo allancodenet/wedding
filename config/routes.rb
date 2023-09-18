@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :clients, except: [:destroy]
   resources :providers do
     resource :like, controller: :likes
+    resources :ratings, controller: :ratings
     resources :messages, only: %i[new create], controller: :cold_messages
     member do
       delete :delete_image_attachment
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
       get :all, to: "providers#all"
     end
   end
-
   resources :conversations do
     resources :messages
   end

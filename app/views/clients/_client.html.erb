@@ -1,4 +1,4 @@
-<div id="<%= dom_id client %>">
+<div id="<%= dom_id client %>" class = "container col-12 col-md-8 mx-auto rounded text-wrap border mt-3">
   <p>
     <strong>Name:</strong>
     <%= client.name %>
@@ -23,5 +23,9 @@
     <strong>Budget:</strong>
     <%= client.budget %>
   </p>
-
+<hr>
+<div>
+  <%= link_to "Edit this client", edit_client_path(@client) %> |
+  <%= link_to "Edit My profile", edit_user_registration_path(current_user) %> |
+</div>
 </div>

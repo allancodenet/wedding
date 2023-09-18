@@ -41,6 +41,10 @@
     <%= form.text_field :name, required: true, placeholder: "Write your Business Name here" %>
   </div>
 
+ <div>
+    <%= form.number_field :phone_number, placeholder: "write your phone number here" %>
+  </div>
+
   <div>
     <%= form.text_area :motto , required: true, placeholder: "Write your Business Motto here" %>
   </div>
@@ -59,10 +63,13 @@
   <div>
     <%= form.text_field :tiktok, placeholder: "Link to your tiktok if any" %>
   </div>
+  <div>
+    <%= form.text_field :facebook, placeholder: "Link to your facebook" %>
+  </div>
 
 
   <div>
-    <%= form.text_field :location, required: true %>
+    <%= form.text_field :location, required: true, placeholder: "Indicate the nearest town" %>
   </div>
 
   <div>

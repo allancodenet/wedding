@@ -15,6 +15,8 @@ class ProvidersController < ApplicationController
 
   # GET /providers/1 or /providers/1.json
   def show
+    @provider = Provider.find params[:id]
+    @providers = Provider.limit(3)
   end
 
   # GET /providers/new
@@ -95,6 +97,6 @@ class ProvidersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def provider_params
-    params.require(:provider).permit(:service, :name, :motto, :description, :website, :instagram, :tiktok, :location, images: [])
+    params.require(:provider).permit(:service, :name, :motto, :description, :website, :instagram, :tiktok, :facebook, :phone_number, :location, images: [])
   end
 end

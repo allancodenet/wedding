@@ -1,7 +1,7 @@
 
 <%= button_to  provider_like_path(@provider) , method: :patch, class: "btn btn-light border border-secondary mx-2 icon-hover " do %>
     <%= tag.div id: dom_id(@provider, :likes) do %>
-            <% if @provider.liked_by?(current_user.client)  %>
+            <% if @provider.liked_by?(current_user&.client)  %>
             <i class= "me-1 fa fa-heart fa-lg text-danger "> </i>
             
             <% else %>

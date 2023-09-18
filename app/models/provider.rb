@@ -1,7 +1,8 @@
 class Provider < ApplicationRecord
   belongs_to :user
   has_many_attached :images, dependent: :destroy
-  has_many :likes, as: :record
+  has_many :likes, as: :record, dependent: :destroy
+  has_many :ratings, as: :record, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many :conversations
   has_many :messages, -> { where(sender_type: Provider.name) }, through: :conversations
@@ -10,7 +11,7 @@ class Provider < ApplicationRecord
   validates :service, :name, :description, :location, presence: true
   validates :images, presence: true
   validate :validate_attachments_limit, :validate_attachment_formats
-
+  after_commit :average_rating
   enum service: {
     venue: 0,
     photographer: 1,
@@ -18,7 +19,15 @@ class Provider < ApplicationRecord
     decorator: 3,
     makeup: 4,
     MC: 5,
-    sound: 6
+    sound: 6,
+    barber: 7,
+    videography: 8,
+    gowns: 9,
+    shoes: 10,
+    rings: 11,
+    maids_outfit: 12,
+    grooms_outfit: 13
+
   }
 
   def liked_by?(client)
@@ -31,6 +40,10 @@ class Provider < ApplicationRecord
 
   def unlike(client)
     likes.where(client: client).destroy_all
+  end
+
+  def rated_by?(rater)
+    ratings.where(rater: rater).any?
   end
 
   def self.ransackable_attributes(auth_object = nil)
