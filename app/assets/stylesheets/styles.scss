@@ -1,0 +1,21 @@
+.form-control-borderless:focus {
+    border: none;
+    outline: none;
+}
+
+.form-control-borderless:hover,
+.form-control-borderless:active,
+.form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+@media (max-width: 600px) {
+    ::placeholder {
+        font-size: 12px;
+        /* Reduce the placeholder text size for smaller screens */
+    }
+}

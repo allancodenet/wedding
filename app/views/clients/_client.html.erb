@@ -21,11 +21,16 @@
 
   <p>
     <strong>Budget:</strong>
-    <%= client.budget %>
+    <%= number_to_currency(client.budget, unit: 'Ksh.' )%>
+  </p>
+
+  <p>
+    <strong>number:</strong>
+    <%=client.phone_number %>
   </p>
 <hr>
 <div>
-  <%= link_to "Edit this client", edit_client_path(@client) %> |
-  <%= link_to "Edit My profile", edit_user_registration_path(current_user) %> |
+  <%= link_to "Edit this wedding details", edit_client_path(@client) %> |
+  <%= link_to "Edit My client profile", edit_user_registration_path(current_user) %> |
 </div>
 </div>

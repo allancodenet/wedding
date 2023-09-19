@@ -11,6 +11,7 @@ class Provider < ApplicationRecord
   validates :service, :name, :description, :location, presence: true
   validates :images, presence: true
   validate :validate_attachments_limit, :validate_attachment_formats
+  validate :validate_phone_number_length
   after_commit :average_rating
   enum service: {
     venue: 0,
@@ -47,8 +48,17 @@ class Provider < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[service]
+    %w[service location name service_enum]
   end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["likes", "ratings", "user"]
+  end
+
+  ransacker :service_enum, formatter: proc { |v| services[v] } do |parent|
+    parent.table[:service]
+  end
+  # ransacker :service, formatter: proc { |v| services[v] }
 
   def validate_attachments_limit
     if images.length > 5
@@ -63,6 +73,12 @@ class Provider < ApplicationRecord
       unless allowed_formats.include?(image.content_type)
         errors.add(:images, "only JPEG and PNG formats are allowed")
       end
+    end
+  end
+
+  def validate_phone_number_length
+    unless phone_number.to_s.length == 12
+      errors.add(:phone_number, "must be exactly 12 characters long")
     end
   end
 

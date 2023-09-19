@@ -25,13 +25,13 @@
                 <div id="collapseServices" class="accordion-collapse collapse show" aria-labelledby="headingServices">
                   <div class="accordion-body">
                     <div>
-                      <% Provider.services.keys.each do |service_key| %>
-                        <% service_name = Provider.services[service_key] %>
-                        <%= f.collection_check_boxes :service_eq_any, [service_name], :to_s, :to_s do |b| %>
+                      <% @services.each do |service_key| %>
+                        <% service_value = Provider.services[service_key] %>
+                        <%= f.collection_check_boxes :service_eq_any, [service_value], :to_s, :to_s do |b| %>
                           <div class="form-check">
                             <%= b.check_box %>
-                            <label class="form-check-label" for="serviceCheckbox<%= service_name %>"><%= service_key %></label>
-                            <span class="badge rounded-pill bg-secondary"><%= Provider.where(service: service_name).count %></span>
+                            <label class="form-check-label" for="serviceCheckbox<%= service_value %>"><%= service_key %></label>
+                            <span class="badge rounded-pill bg-secondary"><%= Provider.where(service: service_value).count %></span>
                           </div>
                         <% end %>
                       <% end %>

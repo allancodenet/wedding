@@ -15,21 +15,24 @@
       <div>
         <%= form.text_field :name %>
       </div>
+      <div>
+        <%= form.number_field :phone_number, placeholder: " 254 700 000 000" %>
+      </div>
 
       <div>
         <%= form.date_field :wedding_date %>
       </div>
 
       <div>
-        <%= form.text_field :location %>
+        <%= form.text_field :location, placeholder: " preferred venue" %>
       </div>
 
       <div>
-        <%= form.number_field :guest_no %>
+        <%= form.number_field :guest_no ,placeholder: " estimated guests number"%>
       </div>
 
       <div>
-        <%= form.number_field :budget %>
+        <%= form.number_field :budget , placeholder: " estimated buget in kshs"%>
       </div>
 
       <div>
