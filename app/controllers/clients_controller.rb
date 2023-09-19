@@ -28,7 +28,7 @@ class ClientsController < ApplicationController
     authorize @client
     respond_to do |format|
       if @client.save
-        format.html { redirect_to client_url(@client), notice: "Client was successfully created." }
+        format.html { redirect_to client_url(@client), notice: "Your profile was successfully created." }
         format.json { render :show, status: :created, location: @client }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class ClientsController < ApplicationController
     authorize @client
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to client_url(@client), notice: "Client was successfully updated." }
+        format.html { redirect_to client_url(@client), notice: "Your profile was successfully updated." }
         format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,6 +60,6 @@ class ClientsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def client_params
-    params.require(:client).permit(:name, :wedding_date, :location, :guest_no, :budget)
+    params.require(:client).permit(:name, :wedding_date, :location, :guest_no, :budget, :phone_number)
   end
 end
