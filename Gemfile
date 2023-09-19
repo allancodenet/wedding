@@ -85,3 +85,4 @@ gem "ransack"
 
 gem "noticed", "~> 1.6"
 gem "inline_svg"
+gem "city-state"
