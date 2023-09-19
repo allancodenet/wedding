@@ -40,6 +40,22 @@
                   </div>
                 </div>
               </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingLocations">
+                  <button class="accordion-button text-dark bg-light" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseLocations" aria-expanded="true" aria-controls="collapseLocations">
+                    Locations
+                  </button>
+                </h2>
+                <div id="collapseLocations" class="accordion-collapse collapse show" aria-labelledby="headingLocations">
+                  <div class="accordion-body">
+                    <div>
+                      <%= f.select :location_eq, @locations, { include_blank: "All Kenya" }, { class: " prompt form-select form-control form-control-lg form-control-borderless " } %>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             
             <div class="m-3">
