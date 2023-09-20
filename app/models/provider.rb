@@ -48,7 +48,7 @@ class Provider < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[service location name service_enum]
+    %w[service location name service_enum likes_count average_ratings]
   end
 
   def self.ransackable_associations(auth_object = nil)
@@ -87,6 +87,6 @@ class Provider < ApplicationRecord
   end
 
   def show_images
-    images.map { |image| image.variant(resize_to_limit: [1400, 800]).processed }
+    images.map { |image| image.variant(resize_to_limit: [1400, 800]) }
   end
 end

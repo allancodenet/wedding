@@ -3,9 +3,9 @@
             <div id="carousel-1" class="carousel slide" data-bs-ride="false">
                 <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <%= image_tag @provider.images[0] , class: "w-100 d-block" %>
+                    <%= image_tag @provider.show_images[0] , class: "w-100 d-block" %>
                     </div>
-                  <% @provider.images.drop(1).each do |image| %>
+                  <% @provider.show_images.drop(1).each do |image| %>
                     <div class="carousel-item ">
                     <%= image_tag image , class: "w-100 d-block" %>
                     </div>

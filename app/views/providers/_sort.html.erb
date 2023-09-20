@@ -13,12 +13,18 @@
           </div>
           </div>
           <div class="ms-auto">
-            <select class="form-select d-inline-block w-auto border pt-1">
-              <option value="0">Best match</option>
-              <option value="1">Recommended</option>
-              <option value="2">High rated</option>
-              <option value="3">Most Liked</option>
+            <select class="form-select d-inline-block w-auto border pt-1" onchange="location = this.value;">
+             <option value="" disabled selected>Sort by</option>
+              <option value="<%= providers_path('providers_search[s]' => 'likes_count asc') %>">
+                <%= sort_link(@q, :likes_count, 'Most Liked', default_order: :asc) %>
+              </option>
+              <option value="<%= providers_path('providers_search[s]' => 'average_rating desc') %>">
+                <%= sort_link(@q, :average_rating, 'Highest Rated', default_order: :desc) %>
+              </option>
             </select>
+
+      
+      
             <div class="btn-group shadow-0 border">
           </div>
   </header>
