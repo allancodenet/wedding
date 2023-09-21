@@ -16,6 +16,7 @@ class RatingsController < ApplicationController
   end
 
   def edit
+    console
     @rating = Rating.find params[:id]
   end
 
@@ -67,6 +68,6 @@ class RatingsController < ApplicationController
   end
 
   def rating_params
-    params.require(:rating).permit(:star).merge(rater:, record:)
+    params.require(:rating).permit(:star, :comment).merge(rater:, record:)
   end
 end

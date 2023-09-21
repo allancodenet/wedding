@@ -24,6 +24,7 @@
           <%=@provider.name  %> 
           </h4>
           <div class="d-flex flex-row my-3">
+          <% if @provider.ratings.any? %>
             <div class="text-warning mb-1 me-2">
                <% @provider.average_rating&.times do %>
               <i class="fa fa-star"></i>
@@ -32,7 +33,10 @@
              <%= @provider.average_rating.to_f %>
               </span>
             </div>
-            <span class="text-muted"><i class="fas fa-heart text-danger fa-sm mx-1"></i><%= @provider.likes_count %></span>
+          <% end %>
+              <% if @provider.likes.any? %>
+           <span class="text-muted"><i class="fas fa-heart text-danger fa-sm mx-1"></i><%= @provider.likes_count %></span>
+              <% end %>
           </div>
 
 
@@ -85,12 +89,12 @@
                         <li class="nav-item d-flex" role="presentation">
                             <a class="nav-link d-flex align-items-center justify-content-center w-100 active"
                                 id="ex1-tab-1" data-bs-toggle="pill" href="#ex1-pills-1" role="tab"
-                                aria-controls="ex1-pills-1" aria-selected="true">Amenities</a>
+                                aria-controls="ex1-pills-1" aria-selected="true">Description</a>
                         </li>
                         <li class="nav-item d-flex" role="presentation">
                             <a class="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-2"
                                 data-bs-toggle="pill" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2"
-                                aria-selected="false">Pricing</a>
+                                aria-selected="false">Reviews</a>
                         </li>
                         <li class="nav-item d-flex" role="presentation">
                             <a class="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-3"
@@ -100,7 +104,7 @@
                         <li class="nav-item d-flex" role="presentation">
                             <a class="nav-link d-flex align-items-center justify-content-center w-100" id="ex1-tab-4"
                                 data-bs-toggle="pill" href="#ex1-pills-4" role="tab" aria-controls="ex1-pills-4"
-                                aria-selected="false">Seller profile</a>
+                                aria-selected="false">Seller contacts</a>
                         </li>
                     </ul>
           <!-- Pills navs -->
@@ -110,48 +114,26 @@
                         <div class="tab-pane fade show active" id="ex1-pills-1" role="tabpanel"
                             aria-labelledby="ex1-tab-1">
                             <p>
-                                With supporting text below as a natural lead-in to additional content. Lorem ipsum dolor
-                                sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla
-                                pariatur.
+                                <%= @provider.description %>
                             </p>
 
                         </div>
                         <div class="tab-pane fade mb-2" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                            Tab content or sample information now <br />
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                            sunt in culpa qui
-                            officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                            ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                           <% @provider.ratings.each do |rating| %>
+
+                            <%= rating.comment %>
+                            <%= rating.star %>
+                           <% end %>
                         </div>
                         <div class="tab-pane fade mb-2" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-                            Another tab content or sample information now <br />
-                            Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt
-                            mollit anim id est laborum.
+                           <%= @provider.location %>
                         </div>
                         <div class="tab-pane fade mb-2" id="ex1-pills-4" role="tabpanel" aria-labelledby="ex1-tab-4">
-                            Some other tab content or sample information now <br />
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                            sunt in culpa qui
-                            officia deserunt mollit anim id est laborum.
+                            <% if user_signed_in? %>
+                         <%= @provider.phone_number %>
+                         <% else %>
+                         sign in to  see phone number
+                         <% end %>
                         </div>
                     </div>
           <!-- Pills content -->

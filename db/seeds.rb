@@ -37,6 +37,7 @@ user2 = User.create!(
   provider = Provider.new(
     user: user1,
     name: Faker::Company.name,
+    phone_number: Faker::PhoneNumber.area_code,
     description: Faker::Lorem.paragraphs(number: 5).join("\n\n"),
     motto: Faker::Lorem.sentence,
     location: Faker::Address.city,
@@ -56,6 +57,7 @@ end
   provider = Provider.new(
     user: user2,
     name: Faker::Company.name,
+    phone_number: Faker::PhoneNumber.area_code,
     description: Faker::Lorem.paragraphs(number: 5).join("\n\n"),
     motto: Faker::Lorem.sentence,
     location: Faker::Address.city,

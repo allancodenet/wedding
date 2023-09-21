@@ -11,8 +11,7 @@ class Provider < ApplicationRecord
   validates :service, :name, :description, :location, presence: true
   validates :images, presence: true
   validate :validate_attachments_limit, :validate_attachment_formats
-  validate :validate_phone_number_length
-  after_commit :average_rating
+  # validate :validate_phone_number_length
   enum service: {
     venue: 0,
     photographer: 1,
@@ -83,7 +82,7 @@ class Provider < ApplicationRecord
   end
 
   def resized_images
-    images.map { |image| image.variant(resize_to_limit: [300, 300]) }
+    images.map { |image| image.variant(resize_to_limit: [300, 200]) }
   end
 
   def show_images

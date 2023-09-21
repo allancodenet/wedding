@@ -29,6 +29,7 @@ class ProvidersController < ApplicationController
 
   # GET /providers/1/edit
   def edit
+    console
     @provider = Provider.find params[:id]
     authorize @provider
   end
@@ -78,7 +79,7 @@ class ProvidersController < ApplicationController
 
   def delete_image_attachment
     @image = ActiveStorage::Attachment.find(params[:id])
-    @image.purge
+    @image.purge_later
     redirect_back(fallback_location: request.referer, notice: "Image deleted")
   end
 

@@ -1,0 +1,9 @@
+  
+            <div class= "d-flex flex-wrap">
+             <% if @provider.images.attached? %>
+                <% @provider.images.each do |image| %>
+                <%= image_tag(image ,style: "width:  50px; height: 50px; margin: 5px;") %>
+                  <%= button_to 'X', delete_image_attachment_provider_path(image.id), method: :delete %>
+                <% end %>
+              <% end %>
+            </div>

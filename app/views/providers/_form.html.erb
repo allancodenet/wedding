@@ -1,84 +1,64 @@
 <div class = " container">
+  <%= bootstrap_form_with(model: provider) do |form| %>
+            <% if provider.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
 
-<%= bootstrap_form_with(model: provider) do |form| %>
-  <% if provider.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+                <ul>
+                  <% provider.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+         
 
-      <ul>
-        <% provider.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+
+            <div>
+              <span class=" text-success fw-bold">  Kindly attach five images of your work</span>
+              <%= form.file_field :images, multiple: true%>
+            </div>
+            <div>
+              <%= form.select :service, Provider.services.keys %>
+            </div>
+
+            <div>
+              <%= form.text_field :name, required: true, placeholder: "Write your Business Name here" %>
+            </div>
+
+           <div>
+              <%= form.number_field :phone_number, placeholder: "write your phone number here" %>
+            </div>
+
+            <div>
+              <%= form.text_area :motto , required: true, placeholder: "Write your Business Motto here" %>
+            </div>
+            <div>
+              <%= form.text_area :description , required: true, placeholder: "Describe your business here" %>
+            </div>
+
+            <div>
+              <%= form.text_field :website, placeholder: "Link to your website if any" %>
+            </div>
+
+            <div>
+              <%= form.text_field :instagram, placeholder: "Link to your Instagram if any" %>
+            </div>
+
+            <div>
+              <%= form.text_field :tiktok, placeholder: "Link to your tiktok if any" %>
+            </div>
+            <div>
+              <%= form.text_field :facebook, placeholder: "Link to your facebook" %>
+            </div>
+
+
+            <div>
+              <%= form.text_field :location, required: true, placeholder: "Indicate the nearest town" %>
+            </div>
+
+            <div>
+              <%= form.submit %>
+            </div>
   <% end %>
-
-  <div data-controller = "purge">
-   <% if provider.images.attached? %>
-     <% provider.images.each do |image| %>
-     <%= image_tag image ,style: "width:  50px; height: 50px; margin: 5px;" %>
-      <%= form.hidden_field :images, multiple: true, value: image.signed_id, data: {image_target: "image"} %>
-      
-      <%# <%= button_to 'X', delete_image_attachment_provider_path(image.id),
-                    method: :delete
-                      %> 
-      <button data-action="click->purge#delete">
-    X
-  </button>
-     <% end %>
-
- <% end %>
-  </div>
- <div>
-     <span class=" text-success fw-bold">  Kindly attach five images of your work</span>
-    <%= form.file_field :images, multiple: true%>
-  </div>
-  <div>
-    <%= form.select :service, Provider.services.keys %>
-  </div>
-
-  <div>
-    <%= form.text_field :name, required: true, placeholder: "Write your Business Name here" %>
-  </div>
-
- <div>
-    <%= form.number_field :phone_number, placeholder: "write your phone number here" %>
-  </div>
-
-  <div>
-    <%= form.text_area :motto , required: true, placeholder: "Write your Business Motto here" %>
-  </div>
-  <div>
-    <%= form.text_area :description , required: true, placeholder: "Describe your business here" %>
-  </div>
-
-  <div>
-    <%= form.text_field :website, placeholder: "Link to your website if any" %>
-  </div>
-
-  <div>
-    <%= form.text_field :instagram, placeholder: "Link to your Instagram if any" %>
-  </div>
-
-  <div>
-    <%= form.text_field :tiktok, placeholder: "Link to your tiktok if any" %>
-  </div>
-  <div>
-    <%= form.text_field :facebook, placeholder: "Link to your facebook" %>
-  </div>
-
-
-  <div>
-    <%= form.text_field :location, required: true, placeholder: "Indicate the nearest town" %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
-
-
-
 </div>
