@@ -16,7 +16,11 @@
 
             <div>
               <span class=" text-success fw-bold">  Kindly attach five images of your work</span>
-              <%= form.file_field :images, multiple: true%>
+              <% provider.images.each do |image| %>
+              <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+              <% end %>
+
+              <%= form.file_field :images, multiple: true %>
             </div>
             <div>
               <%= form.select :service, Provider.services.keys %>

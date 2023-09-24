@@ -11,8 +11,14 @@
     <div class="col-lg-9">
      <%= render "sort" %>
       <div class="row">
+      <%if @providers.present? %>
         <% @providers.each do |provider| %>
             <%= render provider %>
+        <% end %>
+        <% else %>
+        <div class="card">
+        No Providers found, see all available <%= link_to "here", providers_path %>
+        </div>
         <% end %>
       </div>
     </div>
