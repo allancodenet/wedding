@@ -16,10 +16,10 @@
             <select class="form-select d-inline-block w-auto border pt-1" onchange="location = this.value;">
              <option value="" disabled selected>Sort by</option>
               <option value="<%= providers_path(q: { s: 'likes_count desc' }) %>">
-                <%= sort_link(@q, :likes_count, 'Most Liked', default_order: :desc) %>
+                <%= link_to "most liked"  %> 
               </option>
               <option value="<%= providers_path(q: { s: 'average_rating desc' }) %>">
-                <%= sort_link(@q, :average_rating, 'Highest Rated', default_order: :desc) %>
+                <%=link_to "highest rated"  %>
               </option>
             </select>
 

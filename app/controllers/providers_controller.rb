@@ -13,6 +13,10 @@ class ProvidersController < ApplicationController
       @providers = @providers.where(service: params[:service])
       flash.now[:success] = "Showing #{params[:service]}s."
     end
+
+    if params[:q].present? && params[:q][:s] == "average_rating desc"
+      @providers = @providers.where("ratings_count > 0").order(average_rating: :desc)
+    end
   end
 
   # GET /providers/1 or /providers/1.json

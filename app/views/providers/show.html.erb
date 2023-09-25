@@ -26,11 +26,11 @@
           <div class="d-flex flex-row my-3">
           <% if @provider.ratings.any? %>
             <div class="text-warning mb-1 me-2">
-               <% @provider.average_rating&.times do %>
+               <% @provider.average_rating.to_i&.times do %>
               <i class="fa fa-star"></i>
              <% end %>
               <span class="ms-1">
-             <%= @provider.average_rating.to_f %>
+             <%= @provider.average_rating.to_d%>
               </span>
             </div>
           <% end %>
