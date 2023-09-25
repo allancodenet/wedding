@@ -1,4 +1,5 @@
 class Provider < ApplicationRecord
+  has_rich_text :description
   belongs_to :user
   has_many_attached :images, dependent: :destroy
   has_many :likes, as: :record, dependent: :destroy
@@ -8,7 +9,7 @@ class Provider < ApplicationRecord
   has_many :messages, -> { where(sender_type: Provider.name) }, through: :conversations
 
   has_noticed_notifications
-  validates :service, :name, :description, :location, presence: true
+  validates :service, :name, :location, presence: true
   validates :images, presence: true
   validate :validate_attachments_limit, :validate_attachment_formats
   # validate :validate_phone_number_length
@@ -17,7 +18,7 @@ class Provider < ApplicationRecord
     photographer: 1,
     caterer: 2,
     decorator: 3,
-    makeup: 4,
+    beauty: 4,
     MC: 5,
     sound: 6,
     barber: 7,
@@ -26,7 +27,8 @@ class Provider < ApplicationRecord
     shoes: 10,
     rings: 11,
     maids_outfit: 12,
-    grooms_outfit: 13
+    grooms_outfit: 13,
+    car_hire: 14
 
   }
 
@@ -82,10 +84,10 @@ class Provider < ApplicationRecord
   end
 
   def resized_images
-    images.map { |image| image.variant(resize_to_limit: [300, 200]).processed }
+    images.map { |image| image.variant(resize_to_limit: [nil, 400], saver: {strip: true, quality: 80, interlace: true, optimize_coding: true, trellis_quant: true, quant_table: 3}, format: "jpg") }
   end
 
   def show_images
-    images.map { |image| image.variant(resize_to_limit: [1400, 800]).processed }
+    images.map { |image| image.variant(resize_to_limit: [1400, 800], saver: {strip: true, quality: 80, interlace: true, optimize_coding: true, trellis_quant: true, quant_table: 3}, format: "jpg") }
   end
 end

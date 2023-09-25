@@ -7,7 +7,6 @@ class RatingsController < ApplicationController
   before_action :require_rater!
 
   def new
-    console
     if @provider.rated_by?(current_user.client)
       redirect_to @provider
     else
@@ -16,7 +15,6 @@ class RatingsController < ApplicationController
   end
 
   def edit
-    console
     @rating = Rating.find params[:id]
   end
 

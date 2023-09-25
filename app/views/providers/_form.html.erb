@@ -20,7 +20,7 @@
               <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
               <% end %>
 
-              <%= form.file_field :images, multiple: true %>
+              <%= form.file_field :images, multiple: true,  direct_upload: true , required: false %>
             </div>
             <div>
               <%= form.select :service, Provider.services.keys %>
@@ -38,7 +38,7 @@
               <%= form.text_area :motto , required: true, placeholder: "Write your Business Motto here" %>
             </div>
             <div>
-              <%= form.text_area :description , required: true, placeholder: "Describe your business here" %>
+              <%= form.rich_text_area :description, required: true, placeholder: "Describe your business here" %>
             </div>
 
             <div>

@@ -15,10 +15,10 @@
           <div class="ms-auto">
             <select class="form-select d-inline-block w-auto border pt-1" onchange="location = this.value;">
              <option value="" disabled selected>Sort by</option>
-              <option value="<%= providers_path('providers_search[s]' => 'likes_count asc') %>">
-                <%= sort_link(@q, :likes_count, 'Most Liked', default_order: :asc) %>
+              <option value="<%= providers_path(q: { s: 'likes_count desc' }) %>">
+                <%= sort_link(@q, :likes_count, 'Most Liked', default_order: :desc) %>
               </option>
-              <option value="<%= providers_path('providers_search[s]' => 'average_rating desc') %>">
+              <option value="<%= providers_path(q: { s: 'average_rating desc' }) %>">
                 <%= sort_link(@q, :average_rating, 'Highest Rated', default_order: :desc) %>
               </option>
             </select>

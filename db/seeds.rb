@@ -46,7 +46,7 @@ user2 = User.create!(
 
   # Attach images to the provider
   5.times do
-    image_url = Faker::LoremFlickr.image(search_terms: ["wedding"])
+    image_url = Faker::LoremFlickr.image(size: "1400x800", search_terms: ["wedding"])
     image = URI.open(image_url)
     provider.images.attach(io: image, filename: "#{Faker::Alphanumeric.alpha(number: 10)}.jpg")
   end
@@ -66,7 +66,7 @@ end
 
   # Attach images to the provider
   5.times do
-    image_url = Faker::LoremFlickr.image(search_terms: ["wedding"])
+    image_url = Faker::LoremFlickr.image(size: "1400x800", search_terms: ["wedding"])
     image = URI.open(image_url)
     provider.images.attach(io: image, filename: "#{Faker::Alphanumeric.alpha(number: 10)}.jpg")
   end

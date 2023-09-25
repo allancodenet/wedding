@@ -29,7 +29,6 @@ class ProvidersController < ApplicationController
 
   # GET /providers/1/edit
   def edit
-    console
     @provider = Provider.find params[:id]
     authorize @provider
   end
