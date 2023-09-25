@@ -1,15 +1,22 @@
 
-<div>
-  <%= link_to "Show this provider", @provider %> |
-  <%= link_to "Back to providers", providers_path %>
+<div class ="container">
+  <div class="col-md-8 col-xl-6 mt-3 text-center mx-auto">
+        <%= link_to "Show this provider", @provider %> |
+       <%= link_to "Back to providers", providers_path %>
+                <div class="mt-3">
+                <h3>Edit Provider</h3>
+                </div>
+       <div class ="card mt-3">
+       <%= render "image_delete" %>
+       </div>
+    </div>
+  
 </div>
 
-<section class="position-relative py-4 py-xl-5">
+<section class="position-relative py-3 py-xl-3">
     <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2>Edit Provider</h2>
-            </div>
+        <div class="row mb-3">
+           
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 col-xl-6">

@@ -3,6 +3,7 @@ class LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_provider
   before_action :client
+  before_action :require_liker!
 
   def update
     if @provider.liked_by?(client)
@@ -16,11 +17,20 @@ class LikesController < ApplicationController
     end
   end
 
+  private
+
   def set_provider
     @provider = Provider.find params[:provider_id]
   end
 
   def client
     current_user.client
+  end
+
+  def require_liker!
+    unless client.present?
+      flash[:warning] = "Must be a client to like"
+      redirect_to @provider
+    end
   end
 end

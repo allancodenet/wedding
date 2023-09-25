@@ -7,7 +7,6 @@ class RatingsController < ApplicationController
   before_action :require_rater!
 
   def new
-    console
     if @provider.rated_by?(current_user.client)
       redirect_to @provider
     else
@@ -67,6 +66,6 @@ class RatingsController < ApplicationController
   end
 
   def rating_params
-    params.require(:rating).permit(:star).merge(rater:, record:)
+    params.require(:rating).permit(:star, :comment).merge(rater:, record:)
   end
 end

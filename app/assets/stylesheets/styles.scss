@@ -11,6 +11,15 @@
     box-shadow: none;
 }
 
+.carousel-image {
+    // width: 1400px;
+    /* Set your desired width */
+    // height: 800px;
+    /* Set your desired height */
+    /* You can adjust the width and height values as needed */
+    object-fit: cover;
+    /* Maintain aspect ratio and cover container */
+}
 
 
 @media (max-width: 600px) {
@@ -19,6 +28,7 @@
         /* Reduce the placeholder text size for smaller screens */
     }
 
+    
     .prompt {
         font-size: 12px;
         /* Reduce the placeholder text size for smaller screens */

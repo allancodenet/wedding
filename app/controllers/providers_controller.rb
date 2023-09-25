@@ -4,9 +4,10 @@ class ProvidersController < ApplicationController
 
   # GET /providers or /providers.json
   def index
+    @locations = Provider.distinct.pluck(:location)
     @services = Provider.services.keys
     @q = Provider.ransack(params[:q])
-    @providers = @q.result.with_attached_images.order(created_at: :desc)
+    @providers = @q.result.with_attached_images.order(created_at: :desc).includes(:likes, :ratings)
 
     if params[:service].present?
       @providers = @providers.where(service: params[:service])
@@ -77,7 +78,7 @@ class ProvidersController < ApplicationController
 
   def delete_image_attachment
     @image = ActiveStorage::Attachment.find(params[:id])
-    @image.purge
+    @image.purge_later
     redirect_back(fallback_location: request.referer, notice: "Image deleted")
   end
 
