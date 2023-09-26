@@ -49,7 +49,7 @@ class Provider < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[service location name service_enum likes_count average_ratings]
+    %w[service location name service_enum likes_count average_rating]
   end
 
   def self.ransackable_associations(auth_object = nil)

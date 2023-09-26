@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_25_152049) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_202740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -121,9 +121,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_152049) do
     t.text "motto"
     t.integer "likes_count", default: 0
     t.integer "ratings_count", default: 0
-    t.decimal "average_rating", precision: 2
     t.string "facebook"
     t.bigint "phone_number"
+    t.decimal "average_rating", precision: 4, scale: 2
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 
