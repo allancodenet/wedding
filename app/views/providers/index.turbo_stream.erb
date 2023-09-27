@@ -1,0 +1,21 @@
+<%= turbo_stream.append "providers" do %>
+   <%if @providers.present? %>
+        <% @providers.each do |provider| %>
+                  <%= render provider %>
+        <% end %>
+     <% else %>
+        <div class="card">
+        No Providers found, see all available <%= link_to "here", providers_path %>
+        </div>
+    <% end %>
+       
+<% end %>
+<% if @pagy.next.present? %>
+  <%= turbo_stream.replace "pagination" do %>
+    <%= turbo_frame_tag "pagination",
+                        src: providers_path(page: @pagy.next,format: :turbo_stream),loading: :lazy %>
+                                                  
+                                                   
+                        
+  <% end %>
+<% end %>

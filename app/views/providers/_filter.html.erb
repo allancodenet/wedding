@@ -1,5 +1,6 @@
  <div class="col-lg-3">
         <!-- Toggle button -->
+      
         <button
                 class="btn btn-outline-secondary mb-3 mt-4 w-100 d-lg-none"
                 type="button"
@@ -13,7 +14,7 @@
         </button>
         <!-- Collapsible wrapper -->
         <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
-           <%= search_form_for @q, url: providers_path do |f| %>
+           <%= search_form_for @q, data: {turbo_frame: :results}  do |f| %>
             <div class="accordion" id="accordionPanelsStayOpenExample" data-controller="provider-filter">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingServices">

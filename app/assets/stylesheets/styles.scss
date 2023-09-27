@@ -22,9 +22,11 @@
 }
 
 
+
 @media (max-width: 600px) {
     ::placeholder {
         font-size: 12px;
+        font-weight: bold;
         /* Reduce the placeholder text size for smaller screens */
     }
 

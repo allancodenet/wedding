@@ -1,24 +1,22 @@
- <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
+ <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3" >
+
           <strong class="d-block py-2 border rounded p-2">Showing <span><%= pluralize( @providers.size,"Service")%></span>  </strong>
           <div class="ms-auto" >
           <div class="mt-3">
-            <%= search_form_for @q, url: providers_path, method: :get, class: "mb-3" do |f| %>
+            <%= search_form_for @q,  data: {turbo_frame: :results}, class: "mb-3" do |f| %>
               <div class="input-group">
-                <%= f.search_field :location_or_name_cont, class: "form-control form-control form-control-borderless ", placeholder: "search by name or location" %>
-                <div class="input-group-append mx-2">
-                  <%= f.submit "Search", class: "btn  btn-secondary " %>
-                </div>
+                <%= f.search_field :location_or_name_cont, class: "form-control  ", placeholder: "search name or location", oninput: 'this.form.requestSubmit()' %>
               </div>
             <% end %>
           </div>
           </div>
-          <div class="ms-auto">
+          <div class="ms-auto" >
             <select class="form-select d-inline-block w-auto border pt-1" onchange="location = this.value;">
              <option value="" disabled selected>Sort by</option>
               <option value="<%= providers_path(q: { s: 'likes_count desc' }) %>">
-                <%= link_to "most liked"  %> 
+                <%= link_to "most liked",  data: {turbo_frame: :results}  %> 
               </option>
-              <option value="<%= providers_path(q: { s: 'average_rating desc' }) %>">
+              <option value="<%= providers_path(q: { s: 'average_rating desc', average_rating_gt: 0}) %>" data-turbo-frame="results">
                 <%=link_to "highest rated"  %>
               </option>
             </select>

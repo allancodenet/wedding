@@ -28,7 +28,7 @@
                 <p class="text-secondary card-text "> <i class="fa fa-map-marker" aria-hidden="true"></i><%= provider.location.capitalize %></p>
                 </div>
                  <p>
-                  <%= link_to "View this service", provider , class: "btn btn-outline-info d-grid"%>
+                  <%= link_to "View this service", provider , class: "btn btn-outline-info d-grid", data: {turbo_frame: :_top}%>
                 </p>
             </div>
         </div>
