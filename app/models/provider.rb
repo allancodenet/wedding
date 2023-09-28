@@ -7,7 +7,6 @@ class Provider < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many :conversations
   has_many :messages, -> { where(sender_type: Provider.name) }, through: :conversations
-
   has_noticed_notifications
   validates :service, :name, :location, presence: true
   validates :images, presence: true
@@ -31,6 +30,10 @@ class Provider < ApplicationRecord
     car_hire: 14
 
   }
+
+  def top_rated?
+    average_rating.to_i > 4
+  end
 
   def liked_by?(client)
     likes.where(client: client).any?

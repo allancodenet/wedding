@@ -10,17 +10,17 @@
    <%= render "filter" %>
     <div class="col-lg-9">
      <%= render "sort" %>
-      <div class="row">
-      <%if @providers.present? %>
-        <% @providers.each do |provider| %>
-            <%= render provider %>
-        <% end %>
-        <% else %>
-        <div class="card">
-        No Providers found, see all available <%= link_to "here", providers_path %>
-        </div>
-        <% end %>
-      </div>
+      <%= turbo_frame_tag :results do %>
+       <div class="row" id ="providers">
+        
+           
+       </div>
+         <%= turbo_frame_tag :pagination,
+                      loading: :lazy,
+                      src: providers_path(format: :turbo_stream, q: params[:q]) %>
+
+
+       <% end %>
     </div>
 
 
