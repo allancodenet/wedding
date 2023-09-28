@@ -22,6 +22,11 @@
                     </div>
             </div>
             <div class="card-body ">
+                 <div>
+                 <% if provider.top_rated? %>
+                <span class="badge bg-warning"> Top Rated</span>
+                <% end %>
+                 </div>
               <h6 class="card-title fw-bold d-inline-block text-truncate" style="max-width: 220px;"><%= provider.name.capitalize %></h6>
                   <div class= "d-flex  justify-content-around">
                 <p class="card-text "><%= provider.service.capitalize%></p>

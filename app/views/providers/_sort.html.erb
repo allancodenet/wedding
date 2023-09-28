@@ -1,11 +1,10 @@
  <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3" >
 
-          <strong class="d-block py-2 border rounded p-2">Showing <span><%= pluralize( @providers.size,"Service")%></span>  </strong>
           <div class="ms-auto" >
           <div class="mt-3">
             <%= search_form_for @q,  data: {turbo_frame: :results}, class: "mb-3" do |f| %>
               <div class="input-group">
-                <%= f.search_field :location_or_name_cont, class: "form-control  ", placeholder: "search name or location", oninput: 'this.form.requestSubmit()' %>
+                  <%= f.select :service_enum_eq, @services, { prompt: "Select Service" }, class: " prompt form-select form-control form-control-lg form-control-borderless " , onchange: 'this.form.requestSubmit()' %>
               </div>
             <% end %>
           </div>
@@ -16,8 +15,8 @@
               <option value="<%= providers_path(q: { s: 'likes_count desc' }) %>">
                 <%= link_to "most liked",  data: {turbo_frame: :results}  %> 
               </option>
-              <option value="<%= providers_path(q: { s: 'average_rating desc', average_rating_gt: 0}) %>" data-turbo-frame="results">
-                <%=link_to "highest rated"  %>
+              <option value="<%= providers_path(q: { s: 'average_rating desc', average_rating_gt: 0}) %>" >
+                <%=link_to "highest rated", data: {turbo_frame: :results}   %>
               </option>
             </select>
 
