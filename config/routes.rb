@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :services
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   resources :clients, except: [:destroy]
   resources :providers do
