@@ -12,7 +12,7 @@
           <div class="ms-auto" >
             <select class="form-select d-inline-block w-auto border pt-1" onchange="location = this.value;">
              <option value="" disabled selected>Sort by</option>
-              <option value="<%= providers_path(q: { s: 'likes_count desc' }) %>">
+              <option value="<%= providers_path(q: { s: 'likes_count desc',likes_count_gt: 0 }) %>">
                 <%= link_to "most liked",  data: {turbo_frame: :results}  %> 
               </option>
               <option value="<%= providers_path(q: { s: 'average_rating desc', average_rating_gt: 0}) %>" >

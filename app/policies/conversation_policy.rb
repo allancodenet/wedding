@@ -18,6 +18,6 @@ class ConversationPolicy < ApplicationPolicy
   end
 
   def provider_recipient?
-    user.providers == record.provider
+    user.providers.find { |provider| provider == record.provider }
   end
 end

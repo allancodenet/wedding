@@ -3,9 +3,9 @@ class Client < ApplicationRecord
   validates :name, presence: true
   # validates :phone_number, presence: true
   # validate :validate_phone_number_length
-  has_many :conversations
-  has_many :likes
-  has_many :ratings, as: :rater
+  has_many :conversations, dependent: :destroy
+  has_many :likes, as: :liker, dependent: :destroy
+  has_many :ratings, as: :rater, dependent: :destroy
   has_noticed_notifications
 
   def validate_phone_number_length

@@ -7,7 +7,7 @@ class ProvidersController < ApplicationController
     @locations = Provider.distinct.pluck(:location)
     @services = Provider.services.keys
     @q = Provider.ransack(params[:q]&.permit!)
-    @pagy, @providers = pagy_countless(@q.result.with_attached_images.order(created_at: :desc).includes(:likes, :ratings), items: 5)
+    @pagy, @providers = pagy_countless(@q.result.with_attached_images.includes(:likes, :ratings), items: 5)
   end
 
   # GET /providers/1 or /providers/1.json
