@@ -20,7 +20,14 @@
     object-fit: cover;
     /* Maintain aspect ratio and cover container */
 }
+.hero-btn {
+    background: linear-gradient(to bottom, #a077ff 0%, #ef67ff 100%);
+}
 
+.hero-text {
+    font-family: nunito, helvetica, Arial, sans-serif;
+
+}
 
 
 @media (max-width: 600px) {

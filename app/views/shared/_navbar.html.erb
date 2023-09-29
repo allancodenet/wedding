@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-expand-md py-3" <% if controller_name == "home"  %> style="background:  #93C572;" <%end  %> >
+<nav class="navbar navbar-light navbar-expand-md py-3 hero-btn"  >
     <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="/">
     <%# <img class="pe-2 pt-0" src="quad logo.png" width="66" height="40" style="margin-right: 5px;" /> %>
@@ -12,11 +12,11 @@
             <% if user_signed_in? %>
               <%= render "shared/adminnav" %>
            <% else %>
-            <%= link_to "Log In", new_user_session_path, class:"btn btn-secondary me-2 " %>
-            <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-outline-secondary" %>
+            <%= link_to "Log In", new_user_session_path, class:"btn hero-btn me-2  text-white" %>
+            <%= link_to "Sign Up", new_user_registration_path, class:"btn hero-btn text-muted" %>
             <% end %>
         </div>
     </div>
 </nav>
-<hr>
+
 
