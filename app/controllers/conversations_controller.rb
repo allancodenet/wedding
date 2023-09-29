@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
   def show
     @conversation = conversation
     @message = Message.new(conversation: @conversation)
-    # authorize @conversation
+    authorize @conversation
     @conversation.mark_notifications_as_read(current_user)
   end
 
