@@ -1,7 +1,7 @@
 class Rating < ApplicationRecord
   belongs_to :record, polymorphic: true, counter_cache: true
   belongs_to :rater, polymorphic: true
-  after_commit :update_average_rating, on: [:create, :update]
+  after_commit :update_average_rating, on: [:create, :update, :destroy]
   # validates :record_id, uniqueness: {scope: :rater_id}
 
   def update_average_rating
