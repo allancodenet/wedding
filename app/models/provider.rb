@@ -44,6 +44,10 @@ class Provider < ApplicationRecord
     published_at? && published_at <=Time.current
   end
 
+  def scheduled?
+    published_at? && published_at >Time.current
+  end
+
   def top_rated?
     average_rating.to_i > 4
   end

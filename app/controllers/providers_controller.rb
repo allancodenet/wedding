@@ -1,7 +1,7 @@
 class ProvidersController < ApplicationController
   before_action :set_provider, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
-
+  before_action :authenticate_user!, only: %i[new create edit update destroy all]
+  before_action :verify_role, only: %i[all]
   # GET /providers or /providers.json
   def index
     @locations = Provider.published.distinct.pluck(:location)
@@ -12,8 +12,13 @@ class ProvidersController < ApplicationController
 
   # GET /providers/1 or /providers/1.json
   def show
-    @provider = Provider.find params[:id]
-    @providers = Provider.limit(3)
+    if user_signed_in?
+      authorize @provider
+      @provider = Provider.find params[:id]
+    else
+      @provider = Provider.published.find params[:id]
+    end
+   
   end
 
   # GET /providers/new
@@ -83,12 +88,14 @@ class ProvidersController < ApplicationController
   private
 
   def verify_role
-    current_user.role == provider
+    unless current_user.role == "provider"
+      redirect_to providers_path, danger: "unauthorized."
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_provider
-    @provider = user_signed_in? ? Provider.find(params[:id]) : Provider.published.find(params[:id])
+    @provider = Provider.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

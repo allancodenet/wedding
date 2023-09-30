@@ -15,6 +15,14 @@ class ProviderPolicy < ApplicationPolicy
     user_is_provider?
   end
 
+  def show?
+    user_is_owner?
+  end
+
+  def all?
+    user_is_owner?
+  end
+
   private
 
   def user_is_owner?
