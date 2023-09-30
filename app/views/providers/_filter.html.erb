@@ -32,7 +32,7 @@
                           <div class="form-check">
                             <%= b.check_box %>
                             <label class="form-check-label" for="serviceCheckbox<%= service_value %>"><%= service_key %></label>
-                            <span class="badge rounded-pill bg-secondary"><%= Provider.where(service: service_value).count %></span>
+                            <span class="badge rounded-pill bg-secondary"><%= Provider.published.where(service: service_value).count %></span>
                           </div>
                         <% end %>
                       <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_150532) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_30_112428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_150532) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
-    t.date "wedding_date"
+    t.date "event_date"
     t.string "location"
     t.integer "guest_no"
     t.integer "budget"
@@ -124,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_150532) do
     t.string "facebook"
     t.bigint "phone_number"
     t.decimal "average_rating", precision: 4, scale: 2
+    t.datetime "published_at"
     t.index ["user_id"], name: "index_providers_on_user_id"
   end
 

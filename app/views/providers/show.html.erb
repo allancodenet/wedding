@@ -9,7 +9,9 @@
 <% if policy(@provider).destroy? %>
  <%= button_to "Delete", @provider, method: :delete, class: "btn  fa fa-trash" %>
 <% end %>
-  
+
+
+                 
 </div>
 
 
@@ -52,8 +54,8 @@
             <dd class="col-9"><%= @provider.location.capitalize %></dd>
 
 
-            <dt class="col-3">Consultation:</dt>
-            <dd class="col-9">Free</dd>
+            <dt class="col-4">Consultation: </dt>
+            <dd class="col-8">Free</dd>
           </div>
 
           <hr />
@@ -72,6 +74,11 @@
               <%= render "rating" %>
                 
             </div>
+               <div class ="mt-3">
+               <% if @provider.draft? %>
+                 <%= link_to "Publish for  500 shillings only", @provider , class: "btn text-white btn-info ", data: {turbo_frame: :_top}%>
+               <% end %>
+               </div>
         </div>
       </main>
     </div>
