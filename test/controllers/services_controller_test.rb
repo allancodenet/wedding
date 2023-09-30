@@ -17,7 +17,7 @@ class ServicesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create service" do
     assert_difference("Service.count") do
-      post services_url, params: { service: { name: @service.name } }
+      post services_url, params: {service: {name: @service.name}}
     end
 
     assert_redirected_to service_url(Service.last)
@@ -34,7 +34,7 @@ class ServicesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update service" do
-    patch service_url(@service), params: { service: { name: @service.name } }
+    patch service_url(@service), params: {service: {name: @service.name}}
     assert_redirected_to service_url(@service)
   end
 

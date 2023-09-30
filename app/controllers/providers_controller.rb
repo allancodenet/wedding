@@ -18,7 +18,6 @@ class ProvidersController < ApplicationController
     else
       @provider = Provider.published.find params[:id]
     end
-   
   end
 
   # GET /providers/new

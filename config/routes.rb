@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   resources :providers do
     resource :like, controller: :likes
     resources :ratings, controller: :ratings
+    # resource :payments, controller: :payments
     resources :messages, only: %i[new create], controller: :cold_messages
     member do
       delete :delete_image_attachment
+    end
+    member do
+      post "/pay", to: "payments#pay"
     end
     collection do
       get :all, to: "providers#all"

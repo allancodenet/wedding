@@ -41,11 +41,11 @@ class Provider < ApplicationRecord
   end
 
   def published?
-    published_at? && published_at <=Time.current
+    published_at? && published_at <= Time.current
   end
 
   def scheduled?
-    published_at? && published_at >Time.current
+    published_at? && published_at > Time.current
   end
 
   def top_rated?
