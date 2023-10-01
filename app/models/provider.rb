@@ -35,6 +35,7 @@ class Provider < ApplicationRecord
   scope :draft, -> { where(published_at: nil) }
   scope :scheduled, -> { where("published_at >?", Time.current) }
   scope :published, -> { where("published_at <=?", Time.current) }
+  scope :published_newest_first, -> { published.order(published_at: :desc) }
 
   def draft?
     published_at.nil?

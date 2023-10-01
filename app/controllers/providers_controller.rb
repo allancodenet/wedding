@@ -6,7 +6,7 @@ class ProvidersController < ApplicationController
   def index
     @locations = Provider.published.distinct.pluck(:location)
     @services = Provider.published.services.keys
-    @q = Provider.published.ransack(params[:q]&.permit!)
+    @q = Provider.published_newest_first.ransack(params[:q]&.permit!)
     @pagy, @providers = pagy_countless(@q.result.with_attached_images.includes(:likes, :ratings), items: 5)
   end
 

@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   before_action :authenticate_user!
   before_action :auth
   def pay
+    console
     @provider = Provider.find params[:id]
     transactions = PaystackTransactions.new(@pay_stack_obj)
     callback = "http://127.0.0.1:3000#{callback_provider_path(@provider)}"
@@ -15,18 +16,23 @@ class PaymentsController < ApplicationController
       amount: amount,
       email: email,
       currency: currency,
-      callback: callback
+      callback_url: callback
     )
     auth_url = response["data"]["authorization_url"]
     redirect_to auth_url, allow_other_host: true
   end
 
   def callback
-
-    # transaction_reference = "blablablabla-YOUR-VALID-UNIQUE-REFERENCE-HERE"
-	  # transactions = PaystackTransactions.new(paystackObj)
-	  # result = transactions.verify(transaction_reference) 
-  
+    @provider = Provider.find params[:id]
+    transaction_reference = params[:reference]
+    transactions = PaystackTransactions.new(@pay_stack_obj)
+    response = transactions.verify(transaction_reference)
+    if response["data"]["status"] == "success"
+      @provider.update!(published_at: Time.now)
+      redirect_to providers_path, notice: "payment successful #{@provider.name} has been published"
+    else
+      redirect_to providers_path, danger: "payment failed contact us for help"
+    end
   end
 
   def auth
