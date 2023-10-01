@@ -35,6 +35,12 @@
                  <p>
                   <%= link_to "View this service", provider , class: "btn btn-outline-info d-grid", data: {turbo_frame: :_top}%>
                 </p>
+                <div>
+                   <% if provider.draft? %>
+                      <%= link_to "Publish for  500 shillings only", pay_provider_path(provider) , class: "btn text-white btn-info fw-bold", data: {turbo_frame: :_top}%>
+                    <% end %>
+                </div>
+                 
             </div>
         </div>
     </div>

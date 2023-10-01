@@ -1,19 +1,23 @@
 class ProvidersController < ApplicationController
   before_action :set_provider, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
-
+  before_action :authenticate_user!, only: %i[new create edit update destroy all]
+  before_action :verify_role, only: %i[all]
   # GET /providers or /providers.json
   def index
-    @locations = Provider.distinct.pluck(:location)
-    @services = Provider.services.keys
-    @q = Provider.ransack(params[:q]&.permit!)
+    @locations = Provider.published.distinct.pluck(:location)
+    @services = Provider.published.services.keys
+    @q = Provider.published_newest_first.ransack(params[:q]&.permit!)
     @pagy, @providers = pagy_countless(@q.result.with_attached_images.includes(:likes, :ratings), items: 5)
   end
 
   # GET /providers/1 or /providers/1.json
   def show
-    @provider = Provider.find params[:id]
-    @providers = Provider.limit(3)
+    if user_signed_in?
+      authorize @provider
+      @provider = Provider.find params[:id]
+    else
+      @provider = Provider.published.find params[:id]
+    end
   end
 
   # GET /providers/new
@@ -34,11 +38,9 @@ class ProvidersController < ApplicationController
     authorize @provider
     respond_to do |format|
       if @provider.save
-        format.html { redirect_to provider_url(@provider), success: "Provider was successfully created." }
-        format.json { render :show, status: :created, location: @provider }
+        format.html { redirect_to all_providers_path, success: "Service draft was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @provider.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,11 +52,13 @@ class ProvidersController < ApplicationController
 
     respond_to do |format|
       if @provider.update(provider_params)
-        format.html { redirect_to provider_url(@provider), success: "Provider was successfully updated." }
-        format.json { render :show, status: :ok, location: @provider }
+        if @provider.draft?
+          format.html { redirect_to all_providers_path, success: "service draft was successfully updated." }
+        else
+          format.html { redirect_to provider_url(@provider), success: "Provider was successfully updated." }
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @provider.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -67,7 +71,6 @@ class ProvidersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to providers_url, danger: "Provider was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
@@ -84,7 +87,9 @@ class ProvidersController < ApplicationController
   private
 
   def verify_role
-    current_user.role == provider
+    unless current_user.role == "provider"
+      redirect_to providers_path, danger: "unauthorized."
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.

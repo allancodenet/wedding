@@ -9,6 +9,7 @@ class Provider < ApplicationRecord
   has_many :messages, -> { where(sender_type: Provider.name) }, through: :conversations
   has_noticed_notifications
   validates :service, :name, :location, presence: true
+  validates :service, uniqueness: {scope: :user_id}
   validates :images, presence: true
   validate :validate_attachments_limit, :validate_attachment_formats
   # validate :validate_phone_number_length
@@ -27,9 +28,26 @@ class Provider < ApplicationRecord
     rings: 11,
     maids_outfit: 12,
     grooms_outfit: 13,
-    car_hire: 14
+    car_hire: 14,
+    complete_package: 15
 
   }
+  scope :draft, -> { where(published_at: nil) }
+  scope :scheduled, -> { where("published_at >?", Time.current) }
+  scope :published, -> { where("published_at <=?", Time.current) }
+  scope :published_newest_first, -> { published.order(published_at: :desc) }
+
+  def draft?
+    published_at.nil?
+  end
+
+  def published?
+    published_at? && published_at <= Time.current
+  end
+
+  def scheduled?
+    published_at? && published_at > Time.current
+  end
 
   def top_rated?
     average_rating.to_i > 4

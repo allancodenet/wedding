@@ -56,6 +56,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "standard"
   gem "faker", "~> 3.2"
+  gem "dotenv-rails"
 end
 
 group :development do
@@ -82,9 +83,9 @@ gem "bootstrap_form", "~> 5.2"
 gem "pundit", "~> 2.3"
 gem "open-uri"
 gem "ransack"
-
+gem "faraday"
 gem "noticed", "~> 1.6"
 gem "inline_svg"
 gem "city-state"
-
 gem "pagy", "~> 6.0"
+gem "paystack"
