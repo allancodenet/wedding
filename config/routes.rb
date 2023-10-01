@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       delete :delete_image_attachment
     end
     member do
-      post "/pay", to: "payments#pay"
+      get "/pay", to: "payments#pay"
+      get "/callback", to: "payments#callback"
     end
     collection do
       get :all, to: "providers#all"

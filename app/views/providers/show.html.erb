@@ -76,7 +76,7 @@
             </div>
                <div class ="mt-3">
                <% if @provider.draft? && policy(@provider).show?  %>
-                      <%= button_to "Publish for  500 shillings only", pay_provider_path(provider) , class: "btn text-white btn-info fw-bold", data: {turbo_frame: :_top}%>
+                      <%= link_to "Publish for  500 shillings only", pay_provider_path(@provider) , class: "btn text-white btn-info fw-bold"%>
                <% end %>
                </div>
         </div>
