@@ -55,7 +55,7 @@ class ProvidersController < ApplicationController
         if @provider.draft?
           format.html { redirect_to all_providers_path, success: "service draft was successfully updated." }
         else
-          format.html { redirect_to provider_url(@provider), success: "Provider was successfully updated." }
+          format.html { redirect_to provider_url(@provider), success: "Service was successfully updated." }
         end
       else
         format.html { render :edit, status: :unprocessable_entity }

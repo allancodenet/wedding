@@ -83,8 +83,8 @@ class Provider < ApplicationRecord
   # ransacker :service, formatter: proc { |v| services[v] }
 
   def validate_attachments_limit
-    if images.length > 5
-      errors.add(:images, "can't exceed 5 files")
+    if images.length > 10
+      errors.add(:images, "can't exceed 10 files")
     end
   end
 
@@ -99,8 +99,8 @@ class Provider < ApplicationRecord
   end
 
   def validate_phone_number_length
-    unless phone_number.to_s.length == 12
-      errors.add(:phone_number, "must be exactly 12 characters long")
+    unless phone_number.to_s.length >= 10
+      errors.add(:phone_number, "check phone number")
     end
   end
 

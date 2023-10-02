@@ -9,8 +9,8 @@ class Client < ApplicationRecord
   has_noticed_notifications
 
   def validate_phone_number_length
-    unless phone_number.to_s.length == 12
-      errors.add(:phone_number, "must be exactly 10 characters long")
+    unless phone_number.to_s.length >= 12
+      errors.add(:phone_number, "Check phone number")
     end
   end
 end

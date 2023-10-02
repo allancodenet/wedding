@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     if resource.role == "provider"
-      providers_path
+      all_providers_path
     elsif resource.role == "client"
       new_client_path(current_user)
     else
