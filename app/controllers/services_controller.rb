@@ -1,5 +1,11 @@
 class ServicesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_admin!
   before_action :set_service, only: %i[show edit update destroy]
+
+  def require_admin!
+    redirect_to root_path unless current_user.admin?
+  end
 
   # GET /services or /services.json
   def index

@@ -14,7 +14,7 @@ class NotificationDashboard < Administrate::BaseDashboard
     recipient: Field::Polymorphic,
     type: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

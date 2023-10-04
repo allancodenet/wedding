@@ -29,7 +29,7 @@ class ProviderDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     website: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

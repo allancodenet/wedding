@@ -14,7 +14,7 @@ class ConversationDashboard < Administrate::BaseDashboard
     provider: Field::BelongsTo,
     user_with_unread_messages: Field::BelongsTo,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

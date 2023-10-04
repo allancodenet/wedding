@@ -20,7 +20,7 @@ class ClientDashboard < Administrate::BaseDashboard
     ratings: Field::HasMany,
     user: Field::BelongsTo,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
