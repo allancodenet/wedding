@@ -99,7 +99,7 @@ class Provider < ApplicationRecord
   end
 
   def validate_phone_number_length
-    unless phone_number.to_s.length >= 10
+    unless phone_number.to_s.length >= 9
       errors.add(:phone_number, "check phone number")
     end
   end
