@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
   resources :services
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
+  namespace :admin do
+    resources :clients
+    resources :conversations
+    resources :likes
+    resources :messages
+    resources :notifications
+    resources :providers
+    resources :ratings
+    resources :services
+    resources :users
+    resources :stats, only: [:index]
+    root to: "stats#index"
+  end
+
   resources :clients, except: [:destroy]
   resources :providers do
     resource :like, controller: :likes

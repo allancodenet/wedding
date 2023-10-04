@@ -12,7 +12,7 @@ class Provider < ApplicationRecord
   validates :service, uniqueness: {scope: :user_id}
   validates :images, presence: true
   validate :validate_attachments_limit, :validate_attachment_formats
-  # validate :validate_phone_number_length
+  validate :validate_phone_number_length
   enum service: {
     venue: 0,
     photographer: 1,
