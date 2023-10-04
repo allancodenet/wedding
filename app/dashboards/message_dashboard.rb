@@ -15,7 +15,7 @@ class MessageDashboard < Administrate::BaseDashboard
     provider: Field::HasOne,
     sender: Field::Polymorphic,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
