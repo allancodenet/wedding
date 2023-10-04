@@ -5,7 +5,7 @@ class PaymentsController < ApplicationController
     console
     @provider = Provider.find params[:id]
     transactions = PaystackTransactions.new(@pay_stack_obj)
-    callback = "http://127.0.0.1:3000#{callback_provider_path(@provider)}"
+    callback = "https://kenyaserviceproviders.com#{callback_provider_path(@provider)}"
     # Customize your payment details here
     amount = 50000
     email = current_user.email # Replace with the customer's email
