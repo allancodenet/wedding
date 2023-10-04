@@ -90,3 +90,5 @@ gem "city-state"
 gem "pagy", "~> 6.0"
 gem "paystack"
 gem "administrate"
+gem "aws-sdk-s3", require: false
+

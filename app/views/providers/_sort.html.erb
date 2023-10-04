@@ -1,14 +1,31 @@
  <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3" >
 
           <div class="ms-auto" >
-          <div class="mt-3">
+            <div class="mt-3">
+              <%= search_form_for @q,  data: {turbo_frame: :results}, class: "mb-3" do |f| %>
+                <div class="input-group">
+                    <%= f.select :service_enum_eq, @services, { prompt: "Select Service" }, class: " prompt form-select form-control form-control-lg form-control-borderless " , onchange: 'this.form.requestSubmit()' %>
+                </div>
+              <% end %>
+            </div>
+          
+          </div>
+            
+            <div class="ms-auto">
+            
+            <div class="mt-3">
             <%= search_form_for @q,  data: {turbo_frame: :results}, class: "mb-3" do |f| %>
               <div class="input-group">
-                  <%= f.select :service_enum_eq, @services, { prompt: "Select Service" }, class: " prompt form-select form-control form-control-lg form-control-borderless " , onchange: 'this.form.requestSubmit()' %>
+                  <%= f.search_field :name_or_location_cont, placeholder: "Search name or location", class: " form-control form-control-borderless " , oninput: 'this.form.requestSubmit()' %>
               </div>
             <% end %>
           </div>
-          </div>
+            
+            
+            
+            </div>
+
+          
           <div class="ms-auto" >
             <select class="form-select d-inline-block w-auto border pt-1" onchange="location = this.value;">
              <option value="" disabled selected>Sort by</option>
