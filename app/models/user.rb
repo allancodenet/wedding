@@ -12,6 +12,7 @@ class User < ApplicationRecord
       .left_joins(:provider, :client)
       .where("providers.user_id = ? OR clients.user_id = ?", user.id, user.id)
   }
+  scope :admin, -> { where(admin: true) }
   has_many :unread_conversations,
     class_name: :Conversation,
     foreign_key: :user_with_unread_messages_id,
