@@ -2,7 +2,6 @@ class PaymentsController < ApplicationController
   before_action :authenticate_user!
   before_action :auth
   def pay
-    console
     @provider = Provider.find params[:id]
     transactions = PaystackTransactions.new(@pay_stack_obj)
     callback = "https://kenyaserviceproviders.com#{callback_provider_path(@provider)}"
