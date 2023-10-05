@@ -12,12 +12,9 @@ class ProvidersController < ApplicationController
 
   # GET /providers/1 or /providers/1.json
   def show
-    if user_signed_in?
-      authorize @provider
+   
       @provider = Provider.find params[:id]
-    else
-      @provider = Provider.published.find params[:id]
-    end
+  
   end
 
   # GET /providers/new
@@ -70,7 +67,11 @@ class ProvidersController < ApplicationController
     @provider.destroy
 
     respond_to do |format|
-      format.html { redirect_to providers_url, danger: "Provider was successfully destroyed." }
+      if @provider.draft?
+        format.html { redirect_to all_providers_path, danger: "Provider was successfully destroyed." }
+      else
+        format.html { redirect_to providers_path, danger: "Provider was successfully destroyed." }
+      end
     end
   end
 
