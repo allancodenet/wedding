@@ -11,7 +11,7 @@ class Provider < ApplicationRecord
   validates :service, :name, :location, presence: true
   validates :service, uniqueness: {scope: :user_id}
   validates :images, presence: true
-  validate :validate_attachments_limit, :validate_attachment_formats
+  validate :validate_attachments_limit
   validate :validate_phone_number_length
   enum service: {
     venue: 0,
@@ -88,15 +88,6 @@ class Provider < ApplicationRecord
     end
   end
 
-  def validate_attachment_formats
-    allowed_formats = ["image/jpeg", "image/png", "image/jpg"]
-
-    images.each do |image|
-      unless allowed_formats.include?(image.content_type)
-        errors.add(:images, "only JPEG and PNG formats are allowed")
-      end
-    end
-  end
 
   def validate_phone_number_length
     unless phone_number.to_s.length >= 9
