@@ -7,7 +7,7 @@
 <% end %>
  
 <% if policy(@provider).destroy? %>
- <%= button_to "Delete", @provider, method: :delete, data: { confirm: "Are you sure?" } ,class: "btn  fa fa-trash" %>
+ <%= button_to "Delete", @provider, method: :delete, data: { turbo: false} ,class: "btn  fa fa-trash" %>
 <% end %>
 
 
