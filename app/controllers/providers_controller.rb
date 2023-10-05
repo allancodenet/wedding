@@ -12,9 +12,7 @@ class ProvidersController < ApplicationController
 
   # GET /providers/1 or /providers/1.json
   def show
-   
-      @provider = Provider.find params[:id]
-  
+    @provider = Provider.find params[:id]
   end
 
   # GET /providers/new
