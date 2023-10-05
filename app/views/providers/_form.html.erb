@@ -20,7 +20,7 @@
               <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
               <% end %>
 
-              <%= form.file_field :images, multiple: true,  required: false %>
+            <%= render "dropzone", form: form %>
             </div>
             <div>
               <%= form.select :service, Provider.services.keys %>
