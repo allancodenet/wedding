@@ -13,7 +13,9 @@ class LikesController < ApplicationController
     end
 
     respond_to do |format|
-      render turbo_stream: turbo_stream.replace(dom_id(@provider, :likes), partial: "providers/like", locals: {provider: @provider})
+      format.turbo_stream {
+        render turbo_stream: turbo_stream.replace(dom_id(@provider, :likes), partial: "providers/like", locals: {provider: @provider})
+      }
     end
   end
 
