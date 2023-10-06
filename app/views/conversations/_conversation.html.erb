@@ -6,7 +6,7 @@
           <span class="position-absolute inset-0" aria-hidden="true"></span>
           <h2 class="h6 text-secondary fw-bolder  text-wrap">
             <% if conversation.deleted_client_or_provider? %>
-              <%= t("deleted_account") %>
+               <span>Deleted account</span>
             <% else %>
               <%= conversation.other_recipient(current_user).name %>
             <% end %>
