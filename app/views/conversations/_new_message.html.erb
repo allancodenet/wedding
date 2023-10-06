@@ -1,3 +1,6 @@
-  <%= form_with model: [conversation, message] do |form| %>
+  <%= form_with model: [conversation, message],  data: {
+        controller: "reset-form",
+        action: "turbo:submit-end->reset-form#clearInput"
+    } do |form| %>
     <%= render "messages/form", form: form %>
   <% end %>

@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     # authorize @message
     if @message.save_and_notify
       respond_to do |format|
-        # format.turbo_stream { @new_message = conversation.messages.build }
+        format.turbo_stream { @new_message = conversation.messages.build }
         # format.html { redirect_to conversation }
       end
     else

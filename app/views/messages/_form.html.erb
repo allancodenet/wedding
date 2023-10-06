@@ -1,9 +1,11 @@
 
 
 <div class = "mt-3">
-    <%= form.label :content, class: "sr-only" %>
+    <%= form.label :content, class: "sr-only"  %>
     <div class = " pb-5 d-flex justify-content-between">
-        <%= form.text_area :content, placeholder: "Write a message", required: "true", class: "w-100" %>
+        <%= form.text_area :content, placeholder: "Write a message", required: "true", class: "w-100",  data: {
+    reset_form_target: "input"
+  } %>
         <div>
         <%= form.submit "Send" , class: "mx-2 my-2 btn btn-secondary"%>
         </div>
