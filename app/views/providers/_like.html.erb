@@ -1,15 +1,18 @@
 
-<%= button_to  provider_like_path(@provider) , method: :patch, class: "btn btn-light border border-secondary mx-2 icon-hover " do %>
-    <%= tag.div id: dom_id(@provider, :likes) do %>
+<%= tag.div id: dom_id(@provider, :likes) , class: "d-flex" do %>
+    <%= button_to  provider_like_path(@provider) , method: :patch, class: "btn btn-light border border-secondary mx-2 icon-hover " do %>
             <% if @provider.liked_by?(current_user&.client)  %>
-            <i class= "me-1 fa fa-heart fa-lg text-danger "> </i>
-            
+              <i class= "me-1 fa fa-heart fa-lg text-danger "> </i>
             <% else %>
-            <i class= "me-1 fa fa-heart fa-lg text-secondary "> </i>
-            
+              <i class= "me-1 fa fa-heart fa-lg text-secondary "> </i>
             <% end %>
       
     <% end %>
+     <div class= "me-1">
+       <% if @provider.likes.any? %>
+           <span class="text-muted"><i class="fas fa-heart text-danger fa-sm mx-1"></i><%= @provider.likes_count %></span>
+        <% end %>
+     </div>
      
 <% end %>
 
