@@ -43,7 +43,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
-  config.action_cable.allowed_request_origins = ["https://kenyaserviceproviders.com", %r{http://kenyaserviceproviders.*}]
+  config.action_cable.allowed_request_origins = ["kenyaserviceproviders.com", %r{http://kenyaserviceproviders.*}]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -65,7 +65,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # set default url
-  Rails.application.routes.default_url_options[:host] = "https://kenyaserviceproviders.com"
+  Rails.application.routes.default_url_options[:host] = "kenyaserviceproviders.com"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
