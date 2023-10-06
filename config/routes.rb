@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'static/terms_of_service'
+  get 'static/privacy_policy'
+  
   resources :services
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
   namespace :admin do
