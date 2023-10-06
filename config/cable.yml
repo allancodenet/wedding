@@ -8,4 +8,4 @@ test:
 production:
   adapter: redis
   url: redis://default:b5444d475c35ca801ee6668c@10.114.0.2:6379/0
-  channel_prefix: wedding_production
+  # channel_prefix: wedding_production
