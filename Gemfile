@@ -57,6 +57,7 @@ group :development, :test do
   gem "standard"
   gem "faker", "~> 3.2"
   gem "dotenv-rails"
+  gem "letter_opener"
 end
 
 group :development do
