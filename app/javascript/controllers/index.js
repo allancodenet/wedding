@@ -9,3 +9,6 @@ application.register("chat", ChatController)
 
 import DropzoneController from "./dropzone_controller"
 application.register("dropzone", DropzoneController)
+
+import ResetFormController from "./reset_form_controller"
+application.register("reset-form", ResetFormController)
