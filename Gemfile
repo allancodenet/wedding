@@ -80,7 +80,7 @@ end
 
 gem "devise", "~> 4.9"
 gem "bootstrap_form", "~> 5.2"
-
+gem "postmark-rails"
 gem "pundit", "~> 2.3"
 gem "open-uri"
 gem "ransack"
