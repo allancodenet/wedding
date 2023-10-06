@@ -95,10 +95,10 @@ class Provider < ApplicationRecord
   end
 
   def resized_images
-    images.map { |image| image.variant(resize_to_limit: [nil, 400], saver: {strip: true, quality: 80, interlace: true, optimize_coding: true, trellis_quant: true, quant_table: 3}, format: "jpg") }
+    images.map { |image| image.variant(resize_to_limit: [720, 480], saver: {strip: true, quality: 80, interlace: true, optimize_coding: true, trellis_quant: true, quant_table: 3}, format: "jpg") }
   end
 
-  def show_images
-    images.map { |image| image.variant(resize_to_limit: [1400, 800], saver: {strip: true, quality: 80, interlace: true, optimize_coding: true, trellis_quant: true, quant_table: 3}, format: "jpg") }
-  end
+  # def show_images
+  #   images.map { |image| image.variant(resize_to_limit: [1400, 800], saver: {strip: true, quality: 80, interlace: true, optimize_coding: true, trellis_quant: true, quant_table: 3}, format: "jpg") }
+  # end
 end
