@@ -8,7 +8,7 @@ class Message < ApplicationRecord
   has_noticed_notifications
   validates :content, presence: true
   after_create_commit :cache_conversation_read_status
-  # after_create_commit :broadcast_message
+  after_create_commit :broadcast_message
   scope :from_provider, -> { where(sender_type: Provider.name) }
 
   def broadcast_message
