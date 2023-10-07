@@ -1,6 +1,8 @@
 class Provider < ApplicationRecord
   has_rich_text :description
   belongs_to :user
+  validates :phone_number, presence: true
+  validate :validate_phone_number_length
   has_many_attached :images, dependent: :destroy
   has_many :likes, as: :record, dependent: :destroy
   has_many :ratings, as: :record, dependent: :destroy
@@ -90,7 +92,7 @@ class Provider < ApplicationRecord
 
   def validate_phone_number_length
     unless phone_number.to_s.length >= 9
-      errors.add(:phone_number, "check phone number")
+      errors.add(:phone_number, "check phone number length")
     end
   end
 
