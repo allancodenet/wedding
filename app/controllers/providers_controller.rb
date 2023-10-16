@@ -13,6 +13,7 @@ class ProvidersController < ApplicationController
   # GET /providers/1 or /providers/1.json
   def show
     @provider = Provider.find params[:id]
+    @similar_services = @provider.user.providers.published.where.not(id: @provider)
   end
 
   # GET /providers/new
