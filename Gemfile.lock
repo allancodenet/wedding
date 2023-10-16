@@ -76,6 +76,10 @@ GEM
       kaminari (>= 1.0)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
+    ahoy_matey (5.0.2)
+      activesupport (>= 6.1)
+      device_detector (>= 1)
+      safely_block (>= 0.4)
     ast (2.4.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.832.0)
@@ -122,6 +126,7 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    device_detector (1.1.1)
     devise (4.9.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -338,6 +343,7 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    safely_block (0.4.0)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -413,6 +419,7 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  ahoy_matey
   aws-sdk-s3
   bootsnap
   bootstrap_form (~> 5.2)
