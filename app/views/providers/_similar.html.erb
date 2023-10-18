@@ -2,14 +2,17 @@
         <div class="px-0 border rounded-2 shadow-0">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Similar services</h5>
+              <h5 class="card-title">Similar Services</h5>
               <% @similar_services.each do |provider|%>
               <div class="d-flex  border mb-3">
                   <% if provider.images.attached? %>
-                    <%= link_to( image_tag(provider.images[1], class: "img-md img-thumbnail me-2",style: "min-width: 96px; height: 96px;"), provider_path(provider)) %>
+                    <%= link_to( image_tag(provider.images[0], class: "img-md img-thumbnail me-2",style: "min-width: 96px; height: 96px;"), provider_path(provider)) %>
+                    <% else %>
+                    <%= link_to( image_tag("default.jpg", class: "img-md img-thumbnail me-2",style: "min-width: 96px; height: 96px;"), provider_path(provider)) %>
                   <% end %>
+           
                 <div class="info">
-                  <a href="#" class="nav-link mb-1">
+                  <a href="<%= provider_path(provider)%>" class="nav-link mb-1">
                    <%= provider.name %> <br />
                    <%= provider.service %> <br />
                   <strong class="text-dark"> <%= provider.location %></strong>
