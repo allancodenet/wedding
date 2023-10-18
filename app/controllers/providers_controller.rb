@@ -15,7 +15,7 @@ class ProvidersController < ApplicationController
     @provider = Provider.find params[:id]
     @provider_view_count = Ahoy::Event.count { |record| record[:properties]["id"] == @provider.id && record.name == "Viewed Provider" }
     ahoy.track("Viewed Provider", id: @provider.id, name: @provider.name)
-    @similar_services = @provider.user.providers.published.where.not(id: @provider)
+    @similar_services = @provider.user.providers.published.where.not(id: @provider).limit(5)
   end
 
   # GET /providers/new
