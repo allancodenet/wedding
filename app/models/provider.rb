@@ -31,7 +31,8 @@ class Provider < ApplicationRecord
     maids_outfit: 12,
     grooms_outfit: 13,
     car_hire: 14,
-    complete_package: 15
+    wedding_cards: 15,
+    security: 16
 
   }
   scope :draft, -> { where(published_at: nil) }
