@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
     transactions = PaystackTransactions.new(@pay_stack_obj)
     callback = "https://kenyaserviceproviders.com#{callback_provider_path(@provider)}"
     # Customize your payment details here
-    amount = 50000
+    amount = 100000
     email = current_user.email # Replace with the customer's email
     reference = SecureRandom.hex(8)
     currency = "KES"
