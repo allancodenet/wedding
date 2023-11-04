@@ -8,20 +8,9 @@ class Message < ApplicationRecord
   has_noticed_notifications
   validates :content, presence: true
   after_create_commit :cache_conversation_read_status
-  after_create_commit :broadcast_message
   scope :from_provider, -> { where(sender_type: Provider.name) }
 
-  def broadcast_message
-    # Broadcast the Turbo Stream for appending the new message to the "messages" container
-    broadcast_append_to("messages", target: "messages") do
-      render partial: "messages/message", locals: {message: self}
-    end
-
-    # Broadcast the Turbo Stream for updating the "new_message" element
-    broadcast_update_to("new_message", target: "new_message") do
-      render "conversations/new_message", conversation: conversation, message: self
-    end
-  end
+  broadcasts_to ->(message) { [message.conversation, "messages"] }
 
   def cache_conversation_read_status
     conversation.update!(user_with_unread_messages: recipient&.user)
