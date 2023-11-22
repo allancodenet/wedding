@@ -69,7 +69,7 @@ Rails.application.configure do
   config.action_mailer.postmark_settings = {api_token: Rails.application.credentials.postmark_api_token}
 
   # set default url
-  Rails.application.routes.default_url_options[:host] = "kenyaserviceproviders.com"
+  # Rails.application.routes.default_url_options[:host] = "kenyaserviceproviders.com"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
