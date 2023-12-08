@@ -3,22 +3,25 @@ class PaymentsController < ApplicationController
   before_action :auth
   def pay
     @provider = Provider.find params[:id]
-    transactions = PaystackTransactions.new(@pay_stack_obj)
-    callback = "https://kenyaserviceproviders.com#{callback_provider_path(@provider)}"
-    # Customize your payment details here
-    amount = 100000
-    email = current_user.email # Replace with the customer's email
-    reference = SecureRandom.hex(8)
-    currency = "KES"
-    response = transactions.initializeTransaction(
-      reference: reference,
-      amount: amount,
-      email: email,
-      currency: currency,
-      callback_url: callback
-    )
-    auth_url = response["data"]["authorization_url"]
-    redirect_to auth_url, allow_other_host: true
+    @provider.update!(published_at: Time.now)
+    redirect_to providers_path, notice: "Congrats #{@provider.name} has been published"
+
+    # transactions = PaystackTransactions.new(@pay_stack_obj)
+    # callback = "https://kenyaserviceproviders.com#{callback_provider_path(@provider)}"
+    # # Customize your payment details here
+    # amount = 100000
+    # email = current_user.email # Replace with the customer's email
+    # reference = SecureRandom.hex(8)
+    # currency = "KES"
+    # response = transactions.initializeTransaction(
+    #   reference: reference,
+    #   amount: amount,
+    #   email: email,
+    #   currency: currency,
+    #   callback_url: callback
+    # )
+    # auth_url = response["data"]["authorization_url"]
+    # redirect_to auth_url, allow_other_host: true
   end
 
   def callback
