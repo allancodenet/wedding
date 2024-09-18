@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :providers, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
   has_one :client, dependent: :destroy
-  validates :role, presence: true
+  validates :role, presence: true, unless: :admin?
   has_many :conversations, ->(user) {
     unscope(where: :user_id)
       .left_joins(:provider, :client)

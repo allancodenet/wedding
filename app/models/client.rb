@@ -2,7 +2,7 @@ class Client < ApplicationRecord
   belongs_to :user
   validates :name, presence: true
   validates :phone_number, presence: true
-  validate :validate_phone_number_length
+  # validate :validate_phone_number_length
   has_many :conversations, dependent: :destroy
   has_many :likes, as: :liker, dependent: :destroy
   has_many :ratings, as: :rater, dependent: :destroy

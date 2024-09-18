@@ -33,7 +33,7 @@ user2 = User.create!(
 )
 
 # Create porovider with images
-5.times do
+10.times do
   provider = Provider.new(
     user: user1,
     name: Faker::Company.name,
@@ -41,6 +41,7 @@ user2 = User.create!(
     description: Faker::Lorem.paragraphs(number: 5).join("\n\n"),
     motto: Faker::Lorem.sentence,
     location: Faker::Address.city,
+    published_at: Time.current,
     service: Provider.services.keys.sample
   )
 
@@ -51,9 +52,10 @@ user2 = User.create!(
     provider.images.attach(io: image, filename: "#{Faker::Alphanumeric.alpha(number: 10)}.jpg")
   end
   provider.save!
+  puts provider.errors.full_messages unless provider.persisted?
 end
 
-5.times do
+10.times do
   provider = Provider.new(
     user: user2,
     name: Faker::Company.name,
@@ -61,6 +63,7 @@ end
     description: Faker::Lorem.paragraphs(number: 5).join("\n\n"),
     motto: Faker::Lorem.sentence,
     location: Faker::Address.city,
+    published_at: Time.current,
     service: Provider.services.keys.sample
   )
 
@@ -77,7 +80,8 @@ Client.create!(
   user: client1,
   name: "Leilani",
   location: "Kikuyu",
-  wedding_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
+  event_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
+  phone_number: Faker::PhoneNumber.phone_number,
   budget: 100000,
   guest_no: 300
 )
@@ -85,7 +89,8 @@ Client.create!(
   user: client2,
   name: "Vista",
   location: "Nairobi",
-  wedding_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
+  event_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
+  phone_number: Faker::PhoneNumber.phone_number,
   budget: 500000,
   guest_no: 500
 )

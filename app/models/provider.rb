@@ -2,7 +2,7 @@ class Provider < ApplicationRecord
   has_rich_text :description
   belongs_to :user
   validates :phone_number, presence: true
-  validate :validate_phone_number_length
+  # validate :validate_phone_number_length
   has_many_attached :images, dependent: :destroy
   has_many :likes, as: :record, dependent: :destroy
   has_many :ratings, as: :record, dependent: :destroy
@@ -11,10 +11,10 @@ class Provider < ApplicationRecord
   has_many :messages, -> { where(sender_type: Provider.name) }, through: :conversations
   has_noticed_notifications
   validates :service, :name, :location, presence: true
-  validates :service, uniqueness: {scope: :user_id}
+  # validates :service, uniqueness: {scope: :user_id}
   validates :images, presence: true
   validate :validate_attachments_limit
-  validate :validate_phone_number_length
+  # validate :validate_phone_number_length
   enum service: {
     venue: 0,
     photographer: 1,
