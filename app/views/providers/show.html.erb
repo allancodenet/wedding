@@ -51,9 +51,6 @@
             <dt class="col-3">Location:</dt>
             <dd class="col-9"><%= @provider.location.capitalize %></dd>
 
-
-            <dt class="col-4">Consultation: </dt>
-            <dd class="col-8">Free</dd>
           </div>
 
           <hr />
@@ -61,12 +58,12 @@
 
             
           </div>
-            <div class= "d-flex ">
+            <div class= "d-flex justify-content-between p-2">
               <% if @conversations.present? %>
-              <%= link_to "Message", conversation_path(conversation), class: "btn btn-warning shadow-0" %>
+              <%= link_to "Chat", conversation_path(conversation), class: "btn btn-secondary shadow-0" %>
                 
               <% else %>
-              <%= link_to "Message", new_provider_message_path(@provider), class: "btn btn-warning shadow-0" %>
+              <%= link_to "Message", new_provider_message_path(@provider), class: "btn btn-secondary shadow-0" %>
               <% end %>
               <%= render "like" %>
               <%= render "rating" %>
