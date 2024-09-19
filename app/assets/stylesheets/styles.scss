@@ -1,3 +1,7 @@
+body {
+    font-family: 'Satisfy', cursive; // Fallback to cursive if the font fails to load
+}
+
 .form-control-borderless:focus {
     border: none;
     outline: none;
@@ -20,6 +24,7 @@
     object-fit: cover;
     /* Maintain aspect ratio and cover container */
 }
+
 .hero-btn {
     background: linear-gradient(to bottom, #a077ff 0%, #ef67ff 100%);
 }
@@ -34,19 +39,27 @@
     width: 250px;
 }
 
-@media (max-width: 600px) {
-        ::placeholder {
-                font-size: 12px;
-                font-weight: bold;
-                /* Reduce the placeholder text size for smaller screens */
-            }
-        
-                                                .message-text {
-                                                    font-size: 12px;
-                                                }
 
-                                                                .index-card {
-                                                                    height: 350px;
-                                                                    width: 300px;
-                                                                }
+@media (max-width: 600px) {
+    ::placeholder {
+        font-size: 12px;
+        font-weight: bold;
+        /* Reduce the placeholder text size for smaller screens */
+    }
+
+    .message-text {
+        font-size: 12px;
+    }
+
+    .index-card {
+        height: 350px;
+        width: 300px;
+    }
+}
+
+@font-face {
+    font-family: 'Satisfy';
+    src: font-url('satisfy-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
