@@ -52,7 +52,23 @@
       <%= render "shared/flash" %>
  
     <%= yield %>
+     <button id="scrollToTop" class="btn btn-primary m-2" style="display: none;">Scroll to Top</button>
     <%= render "shared/footer" %>
-    
+      <script>
+    // Show button when scrolled down
+    window.onscroll = function() {
+      const button = document.getElementById("scrollToTop");
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    };
+
+    // Scroll to top function
+    document.getElementById("scrollToTop").onclick = function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+  </script>
   </body>
 </html>
