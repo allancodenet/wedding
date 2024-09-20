@@ -13,6 +13,7 @@ body {
     border: none;
     outline: none;
     box-shadow: none;
+    cursor: pointer;
 }
 
 .carousel-image {
@@ -29,6 +30,10 @@ body {
     background: linear-gradient(to bottom, #a077ff 0%, #ef67ff 100%);
 }
 
+.bg-hero {
+    background: #f5bf00;
+}
+
 .hero-text {
     font-family: 'Satisfy', cursive;
 
@@ -39,10 +44,7 @@ body {
 
 }
 
-.index-card {
-    height: 350px;
-    width: 250px;
-}
+
 
 
 @media (max-width: 600px) {
