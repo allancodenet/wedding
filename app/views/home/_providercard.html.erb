@@ -2,109 +2,109 @@
         <div class="container h-100 position-relative pt-4 mt-4">
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <div class="col">
-                    <div class="card " >
+                    <div class="card hero-btn  shadow-lg "  >
                     <%= image_tag "food.jpg", class: "card-img-top w-100 d-block fit-cover", style: "height: 200px;"  %>
                         <div class="card-body p-4">
-                            <p class="text-info card-text mb-0">CATERERING PROVIDERS</p>
-                            <ul class ="list-group">
-                                <li class ="list-group-item">Dessert</li>
-                                <li class ="list-group-item">Cakes</li>
-                                <li class ="list-group-item">Drinks</li>
-                                <li class ="list-group-item">Meals</li>
+                            <p class="text-dark provider-text fw-bold card-text text-center mb-0">CATERERING PROVIDERS</p>
+                            <ul class ="list-group  ">
+                                <li class ="list-group-item text-success">🍰 Dessert</li>
+                                <li class ="list-group-item text-warning">🎂 Cakes</li>
+                                <li class ="list-group-item text-info">🥤 Drinks</li>
+                                <li class ="list-group-item text-danger">🍽️ Meals</li>
                             </ul>
 
-                            <div class="d-flex mt-2">
-                            <%= link_to "See All Caterers", providers_path(q: {service_eq_any: 2  }) , class: "btn btn-info" %>
+                            <div class="d-flex justify-content-center  mt-2">
+                            <%= link_to "See All Caterers", providers_path(q: {service_eq_any: 2  }) , class: "btn  btn-dark text-light" %>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card hero-btn  shadow-lg">
                     <%= image_tag "wedding.jpg", class: "card-img-top w-100 d-block fit-cover", style: "height: 200px;"  %>
                         <div class="card-body p-4">
-                            <p class="text-info card-text mb-0">DECORATION PROVIDERS</p>
+                            <p class="text-dark provider-text fw-bold text-center card-text mb-0">DECORATION PROVIDERS</p>
                             <ul class ="list-group">
-                                <li class ="list-group-item">Chairs</li>
-                                <li class ="list-group-item">Tents</li>
-                                <li class ="list-group-item">Arcs</li>
-                                <li class ="list-group-item">Flowers</li>
+                                <li class ="list-group-item text-primary">🪑 Chairs</li>
+                                <li class ="list-group-item text-success">⛺ Tents</li>
+                                <li class ="list-group-item text-warning">🌉 Arcs</li>
+                                <li class ="list-group-item text-danger">🌸 Flowers</li>
                             </ul>
 
-                            <div class="d-flex mt-2">
-                            <%= link_to "See All Decorators", providers_path(q: {service_eq_any: 3  }) , class: "btn btn-info" %>
+                            <div class="d-flex  justify-content-center mt-2">
+                            <%= link_to "See All Decorators", providers_path(q: {service_eq_any: 3  }) , class: "btn  btn-dark text-light" %>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card hero-btn  shadow-lg">
                     <%= image_tag "makeup.jpg", class: "card-img-top w-100 d-block fit-cover", style: "height: 200px;"  %>
                         <div class="card-body p-4">
-                            <p class="text-info card-text mb-0">BEAUTY AND HAIR</p>
+                            <p class="text-dark provider-text fw-bold card-text text-center mb-0">BEAUTY AND HAIR</p>
                             <ul class ="list-group">
-                                <li class ="list-group-item">Makeup</li>
-                                <li class ="list-group-item">Hair</li>
-                                <li class ="list-group-item">Nails</li>
-                                <li class ="list-group-item">Lashes</li>
+                                <li class ="list-group-item text-info">💄 Makeup</li>
+                                <li class ="list-group-item text-success">💇 Hair</li>
+                                <li class ="list-group-item text-warning">💅 Nails</li>
+                                <li class ="list-group-item text-danger">👁️ Lashes</li>
                             </ul>
 
-                            <div class="d-flex mt-2">
-                            <%= link_to "See All Beauticians", providers_path(q: {service_eq_any: 4 }) , class: "btn btn-info" %>
+                            <div class="d-flex justify-content-center mt-2">
+                            <%= link_to "See All Beauticians", providers_path(q: {service_eq_any: 4 }) , class: "btn btn-dark text-light" %>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card hero-btn  shadow-lg">
                     <%= image_tag "venue.jpg", class: "card-img-top w-100 d-block fit-cover", style: "height: 200px;"  %>
                         <div class="card-body p-4">
-                            <p class="text-info card-text mb-0">RECEPTION VENUES</p>
+                            <p class="text-dark provider-text fw-bold card-text text-center mb-0">RECEPTION VENUES</p>
                             <ul class ="list-group">
-                                <li class ="list-group-item">Outdoors</li>
-                                <li class ="list-group-item">Garden</li>
-                                <li class ="list-group-item"> Castle</li>
-                                <li class ="list-group-item">Church</li>
+                                <li class ="list-group-item text-success">🏞️ Outdoors</li>
+                                <li class ="list-group-item text-primary">🌳 Garden</li>
+                                <li class ="list-group-item text-warning">🏰 Castle</li>
+                                <li class ="list-group-item text-danger">⛪ Church</li>
                             </ul>
 
-                            <div class="d-flex mt-2">
-                            <%= link_to "See All Venues", providers_path(q: {service_eq_any: 0  }) , class: "btn btn-info" %>
+                            <div class="d-flex  justify-content-center mt-2">
+                            <%= link_to "See All Venues", providers_path(q: {service_eq_any: 0  }) , class: "btn  btn-dark text-light" %>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card hero-btn  shadow-lg">
                     <%= image_tag "photography.jpg", class: "card-img-top w-100 d-block fit-cover", style: "height: 200px;"  %>
-                        <div class="card-body p-4">
-                            <p class="text-info card-text mb-0">PHOTOGRAPHY PROVIDERS</p>
+                        <div class="card-body p-4 ">
+                            <p class="text-dark provider-text fw-bold card-text text-center mb-0">PHOTOGRAPHY PROVIDERS</p>
                             <ul class ="list-group">
-                                <li class ="list-group-item">Photos</li>
-                                <li class ="list-group-item">Videos</li>
-                                <li class ="list-group-item">Drones</li>
-                                <li class ="list-group-item">Framing</li>
+                                <li class ="list-group-item text-info">📸 Photos</li>
+                                <li class ="list-group-item text-success">🎥 Videos</li>
+                                <li class ="list-group-item text-warning">🚁 Drones</li>
+                                <li class ="list-group-item text-danger">🖼️ Framing</li>
                             </ul>
 
-                            <div class="d-flex mt-2">
-                            <%= link_to "See All Photographers", providers_path(q: {service_eq_any: 1  }) , class: "btn btn-info" %>
+                            <div class="d-flex justify-content-center mt-2">
+                            <%= link_to "See All Photographers", providers_path(q: {service_eq_any: 1  }) , class: "btn  btn-dark text-light" %>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col" >
-                    <div class="card" >
+                    <div class="card hero-btn  shadow-lg" >
                     <%= image_tag "dj.jpg", class: "card-img-top w-100 d-block fit-cover", style: "height: 200px;"  %>
                         <div class="card-body p-4">
-                            <p class="text-info card-text mb-0">SOUND AND M.C</p>
+                            <p class="text-dark provider-text fw-bold card-text text-center provider-text mb-0">SOUND AND M.C</p>
                             <ul class ="list-group">
-                                <li class ="list-group-item">D.J </li>
-                                <li class ="list-group-item">Public Address</li>
-                                <li class ="list-group-item">Choreography</li>
-                                <li class ="list-group-item">Music</li>
+                                <li class ="list-group-item text-success">🎧 D.J</li>
+                                <li class ="list-group-item text-primary">🔊 Public Address</li>
+                                <li class ="list-group-item text-warning">💃 Choreography</li>
+                                <li class ="list-group-item text-danger">🎶 Music</li>
                             </ul>
 
-                            <div class="d-flex mt-2">
-                            <%= link_to "See All MCs", providers_path(q: {service_eq_any: 6  }) , class: "btn btn-info" %>
+                            <div class="d-flex justify-content-center mt-2">
+                            <%= link_to "See All MCs", providers_path(q: {service_eq_any: 6  }) , class: "btn  btn-dark text-light" %>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
         </div>
                          <div class=" mt-4 col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
                         <div>
-                            <a  class="btn btn-info fs-5 me-2 py-2 px-4" role="button" href="/providers" >See all Services</a>
+                            <a  class="btn hero-btn text-white fs-5 me-2 py-2 px-4" role="button" href="/providers" >See all Services</a>
                         </div>
                     </div>
 

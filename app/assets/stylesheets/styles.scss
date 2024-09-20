@@ -1,3 +1,7 @@
+body {
+    font-family: 'cursive'; // Fallback to cursive if the font fails to load
+}
+
 .form-control-borderless:focus {
     border: none;
     outline: none;
@@ -9,6 +13,7 @@
     border: none;
     outline: none;
     box-shadow: none;
+    cursor: pointer;
 }
 
 .carousel-image {
@@ -20,33 +25,55 @@
     object-fit: cover;
     /* Maintain aspect ratio and cover container */
 }
+
 .hero-btn {
     background: linear-gradient(to bottom, #a077ff 0%, #ef67ff 100%);
 }
 
+.bg-hero {
+    background: #f5bf00;
+}
+
 .hero-text {
-    font-family: nunito, helvetica, Arial, sans-serif;
+    font-family: 'Satisfy', cursive;
 
 }
 
-.index-card {
-    height: 350px;
-    width: 250px;
+.provider-text {
+    font-family: 'Dancing Script', cursive;
+
 }
+
+
+
 
 @media (max-width: 600px) {
-        ::placeholder {
-                font-size: 12px;
-                font-weight: bold;
-                /* Reduce the placeholder text size for smaller screens */
-            }
-        
-                                                .message-text {
-                                                    font-size: 12px;
-                                                }
+    ::placeholder {
+        font-size: 12px;
+        font-weight: bold;
+        /* Reduce the placeholder text size for smaller screens */
+    }
 
-                                                                .index-card {
-                                                                    height: 350px;
-                                                                    width: 300px;
-                                                                }
+    .message-text {
+        font-size: 12px;
+    }
+
+    .index-card {
+        height: 350px;
+        width: 300px;
+    }
+}
+
+@font-face {
+    font-family: 'Satisfy';
+    src: font-url('satisfy-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: font-url('dancing-script.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }

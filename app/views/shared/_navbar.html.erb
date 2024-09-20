@@ -1,19 +1,19 @@
-<nav class="navbar navbar-light navbar-expand-md py-3 hero-btn"  >
+<nav class="navbar hero-text navbar-light navbar-expand-md py-3 hero-btn"  >
     <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="/">
     <%# <img class="pe-2 pt-0" src="quad logo.png" width="66" height="40" style="margin-right: 5px;" /> %>
-    <span class="fw-bold text-start mt-0 pb-0 mb-1 pe-0 pt-0"  style="font-style: italic;text-decoration: underline;font-weight: bold;transform: rotate(-9deg);">Home <br /></span>
+    <span class="fw-bold text-start mt-0 pb-0 mb-1 pe-0 pt-0"  style="font-style: italic;text-decoration: underline;font-weight: bold;transform: rotate(-9deg);">KSP<br /></span>
     </a>
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-3"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div id="navcol-3" class="collapse navbar-collapse">
+        <div id="navcol-3" class="collapse  navbar-collapse">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link fw-bold" href="/providers">All Providers</a></li>
+                <li class="nav-item"><a class=" nav-link fs-4  fw-bold" href="/providers">All Vendors</a></li>
             </ul>
             <% if user_signed_in? %>
               <%= render "shared/adminnav" %>
            <% else %>
-            <%= link_to "Log In", new_user_session_path, class:"btn hero-btn me-2  text-white" %>
-            <%= link_to "Sign Up", new_user_registration_path, class:"btn hero-btn text-muted" %>
+            <%= link_to "Log In", new_user_session_path, class:"btn btn-dark me-2 fs-5  text-white" %>
+            <%= link_to "Sign Up", new_user_registration_path, class:"btn hero-btn  fs-5 text-dark" %>
             <% end %>
         </div>
     </div>
