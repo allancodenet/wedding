@@ -29,11 +29,11 @@
                  </div>
                 <h6 class="card-title fw-bold d-inline-block text-truncate" style="max-width: 220px;"><%= provider.name.capitalize %></h6>
                 <div class= "d-flex flex-column ">
-                 <p class="card-text badge bg-secondary p-2"><%= provider.service.capitalize%></p>
+                 <p class="card-text badge bg-secondary p-2"><%= provider.service%></p>
                     <p class="text-secondary card-text "> <i class="fa fa-map-marker me-2" aria-hidden="true"></i><%= provider.location.capitalize %></p>
                 </div>
                  <p >
-                  <%= link_to "View this service", provider , class: "btn btn-outline-info d-grid mt-2", data: {turbo_frame: :_top}%>
+                  <%= link_to "👁️ View this service", provider , class: "btn btn-outline-secondary d-grid mt-2", data: {turbo_frame: :_top}%>
                 </p>
                 <div>
                    <% if provider.draft? %>

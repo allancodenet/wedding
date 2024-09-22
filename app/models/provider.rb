@@ -16,24 +16,23 @@ class Provider < ApplicationRecord
   validate :validate_attachments_limit
   # validate :validate_phone_number_length
   enum service: {
-    venue: 0,
-    photographer: 1,
-    caterer: 2,
-    decorator: 3,
-    beauty: 4,
-    MC: 5,
-    sound: 6,
-    barber: 7,
-    videography: 8,
-    gowns: 9,
-    shoes: 10,
-    rings: 11,
-    maids_outfit: 12,
-    grooms_outfit: 13,
-    car_hire: 14,
-    wedding_cards: 15,
-    security: 16
-
+    "🏛️ Venue": 0,
+    "📸 Photographer": 1,
+    "🍽️ Caterer": 2,
+    "🎨 Decorator": 3,
+    "💄 Beauty": 4,
+    "🎤 MC": 5,
+    "🔊 Sound": 6,
+    "💈 Barber": 7,
+    "🎥 Videography": 8,
+    "👗 Gowns": 9,
+    "👠 Shoes": 10,
+    "💍 Rings": 11,
+    "👰 Maids Outfit": 12,
+    "🤵 Grooms Outfit": 13,
+    "🚗 Car Hire": 14,
+    "💌 Wedding Cards": 15,
+    "🔒 Security": 16
   }
   scope :draft, -> { where(published_at: nil) }
   scope :scheduled, -> { where("published_at >?", Time.current) }

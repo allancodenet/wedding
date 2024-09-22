@@ -1,11 +1,26 @@
 # README
 
-This project is a directory for wedding service providers  with these features
-* Allowing clients browse / filter through various providers
+This project is a directory for events vendors   with these features
 
-* Allow Providers  and clients communicate through in uilt messaging
+* Allowing vendors to list their services
 
-* Allow clients to rate and review providers
+* Allowing clients browse / filter through various vendors
+
+* Allow vendors  and clients communicate through in built messaging
+
+* Allow clients to rate and review vendors
+
+* Vendors can see stats of their services
+
+* Admin can see users in the website 
+
+* Admin can choose to charge vendors to publish their listing
+
+## SCREENSHOTS 
+![Hero Page](screenshots/hero-page.png)
+![Hero Page2](screenshots/home-page-2.png)
+![All Vendors](screenshots/all-vendors.png)
+![One Vendor](screenshots/one-vendor.png)
 
 # REQUIREMENTS
 Project is a rails monolith with 
